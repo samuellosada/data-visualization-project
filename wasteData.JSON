@@ -1,0 +1,4688 @@
+{
+    "name": "Australia Waste Total",
+    "year": "2018",
+    "totalAmount": 75000000,
+    "wasteCategories": [
+        {
+            "name": "Masonry Materials",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Asphalt",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Bricks",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Concrete",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Rubble",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Plasterboard & Cement Sheeting",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Metals",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Steel",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Aluminium",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-ferrous Metals",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Organics",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Food Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Garden Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Timber",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Organics",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Non-contaminated Biosolids",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Paper & Cardboard",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Cardboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Liquid Paperboard",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Newsprint & Magazines",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Office Paper",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Plastics",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Polyethylene terephthalate (PET)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "High density polyethylene (HDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polyvinyl chloride (PVC)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Low density polyethylene (LDPE)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polypropylene (PP)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Polystyrene (PS)",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other plastics",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Glass",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Glass",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        }, 
+        {
+            "name": "Textiles, Leather & Rubber",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Textiles",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Leather & Rubber",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Hazardous Waste",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Tyres",
+                            "totalAmount": 21
+                        },
+                        {
+                            "name": "Other Hazardous Waste",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Ash",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Ash from coal-fired power stations",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Other",
+            "totalAmount": 21,
+            "wasteIndustrySources": [
+                {
+                    "name": "Waste collection, treatment & disposal services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Imports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ],
+            "wasteDestinations": [
+                {
+                    "name": "Energy Recovery (not landfill)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (for energy recovery)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Landfill (disposal)",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Recycling",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Treatment",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Other Disposal",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Agriculture",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Mining",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Manufacturing",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Electricity, Gas & Water Services",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Construction",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                }, 
+                {
+                    "name": "Public Administration & Safety",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "All other Industries",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Households",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Change in Inventories",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                },
+                {
+                    "name": "Exports",
+                    "totalAmount": 21,
+                    "wasteTypes": [
+                        {
+                            "name": "Other Classified Materials",
+                            "totalAmount": 21
+                        }
+                    ]
+                }
+            ]
+        }
+
+    ]   
+}
