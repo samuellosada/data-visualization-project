@@ -19,8 +19,6 @@ function main(){
         .append('svg') 
         .attr('width', width)
         .attr('height', height)
-        .append('g');
-
 
     //load json data send it to where it can be turned into a treemap chart.
     d3.json("wasteData.json").then ((data) => {
@@ -33,9 +31,10 @@ function main(){
             wasteCategories2016.wasteCategories.push({name, totalAmount});
         }
 
+        let treemapDIM = {width: 700, height: 700}
         //Create new Layout to make a treemap. Gives each child a given x, y and other properties we use to make treemap visualizations
         let treemapLayout = d3.treemap()
-           .size([700, 700])
+           .size([treemapDIM.width, treemapDIM.height])
            .padding(2)
            .paddingOuter(14);
 
@@ -52,19 +51,24 @@ function main(){
         //assign the treemap layout to the hierarchichal data
         treemapLayout(rootNode);
         
-        svg
+        //all windows will have their own 'g' group under the svg. Default window is the first one so all elements append to that for that window.
+        let defaultWindow = svg.append('g').attr('id', 'defaultWindow');
+
+        defaultWindow
             .selectAll("rect")
             .data(rootNode.leaves())
             .enter()
             .append("rect")
                 .attr('x', (d) => {return d.x0})
                 .attr('y', (d) => {return d.y0})
-                .attr('width', (d) => {
-                    return d.x1 - d.x0})
+                .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
-                .style('fill', "gray");
+                .style('fill', "gray")
+                .on('click', (event, d) => {
+                    openWasteCategoryWindow(d)
+                });
 
-        svg 
+        defaultWindow
             .selectAll("g")
             .data(rootNode.leaves())
             .enter()
@@ -75,7 +79,7 @@ function main(){
                 .attr("font-size", "15px")
                 .attr("fill", "white");
 
-        svg 
+        defaultWindow 
             .selectAll("g")
             .data(rootNode.leaves())
             .enter()
@@ -87,14 +91,54 @@ function main(){
                 .attr("fill", "white");
 
         
+        let wasteCategoryWindow = svg.append('g')
+            .attr('id', "wasteCategoryWindow")
+            .attr("visibility", "hidden");
+    
+        wasteCategoryWindow
+            .append("rect")
+                .attr('x', 30)
+                .attr('y', 30)
+                .attr('width', treemapDIM.width - 60)
+                .attr('height', treemapDIM.height - 60)
+                .attr('fill', "white")
+
+        wasteCategoryWindow
+            .append("text")
+                .attr("id", "wasteCategoryTitle")
+                .attr("x", 60)
+                .attr("y", 60)
+                .attr("font-size", "15px")
+                .attr("fill", "black");
 
     }, (err) => {
         alert(err)
     });
 }
 
-function handleWasteCategoryClick(d, i){
-    console.log(d);
+function openWasteCategoryWindow(d){
+    //change visiibility of elements
+    d3.select("#wasteCategoryWindow").attr('visibility', "visible");
+    d3.select("#wasteCategoryTitle")
+        .text(d.data.name)
+        .attr('visibility', "visible");
+
+   
+    if (!document.getElementById('backButton')){
+        let backButton = document.createElement('button');
+        backButton.innerHTML = "back";
+        backButton.setAttribute('id', "backButton");
+        backButton.onclick = () => {closeWasteCategoryWindow()};
+    
+        document.getElementById('visualization').appendChild(backButton);
+    }
+}
+
+function closeWasteCategoryWindow(){
+    d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
+    d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
+
+    document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"));
 }
 
 window.onload = () => {
