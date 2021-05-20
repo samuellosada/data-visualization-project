@@ -23,11 +23,36 @@ function main(){
     //load json data send it to where it can be turned into a treemap chart.
     d3.json("wasteData.json").then ((data) => {
 
+        //year enumeration, to help with the year selection.
+        const Year = {"2016": 0};
+
+        //designated area for year sellection control.
+        let yearSelectionButtons = document.createElement('div');
+        document.getElementById('visualization').appendChild(yearSelectionButtons);
+
+        let button2016 = document.createElement('button');
+        button2016.innerHTML = "2016";
+        button2016.setAttribute('id', '2016');
+        //button2016.onclick(); Need to find a way for them to actually change the year below...
+
+        let button2017 = document.createElement('button');
+        button2017.innerHTML = "2017";
+        button2017.setAttribute('id', '2017');
+
+        let button2018 = document.createElement('button');
+        button2018.innerHTML = "2018";
+        button2018.setAttribute('id', '2018');
+
+        yearSelectionButtons.appendChild(button2016);
+        yearSelectionButtons.appendChild(button2017);
+        yearSelectionButtons.appendChild(button2018);
+        
+
         //takes original Json dataset and converts it so it only displays the necessary information for the first treemap chart.
         var wasteCategories2016 = { "wasteCategories" : []}
 
-        for (let i = 0; i < data.years[0].wasteCategories.length; i++){  
-            var {name, totalAmount} = data.years[0].wasteCategories[i]  //Json Destructuring syntax.  
+        for (let i = 0; i < data.years[Year[2016]].wasteCategories.length; i++){  
+            var {name, totalAmount} = data.years[Year[2016]].wasteCategories[i]  //Json Destructuring syntax.  
             wasteCategories2016.wasteCategories.push({name, totalAmount});
         }
 
@@ -77,7 +102,10 @@ function main(){
                 .attr("y", (d) => {return d.y0 + 20})
                 .text((d) => {return d.data.name}) //data is used to access the leaf node properties.
                 .attr("font-size", "15px")
-                .attr("fill", "white");
+                .attr("fill", "white")
+                .on('click', (event, d) => {
+                    openWasteCategoryWindow(d)
+                });
 
         defaultWindow 
             .selectAll("g")
@@ -86,9 +114,12 @@ function main(){
             .append("text")
                 .attr("x", (d) => {return d.x0 + 5})
                 .attr("y", (d) => {return d.y0 + 50})
-                .text((d) => {return d.data.totalAmount.toLocaleString('en-US')}) 
+                .text((d) => {return d.data.totalAmount.toLocaleString('en-US') + " tonnes"}) 
                 .attr("font-size", "15px")
-                .attr("fill", "white");
+                .attr("fill", "white")
+                .on('click', (event, d) => {
+                    openWasteCategoryWindow(d)
+                });
 
         
         let wasteCategoryWindow = svg.append('g')
@@ -124,6 +155,7 @@ function openWasteCategoryWindow(d){
         .attr('visibility', "visible");
 
    
+    //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
         let backButton = document.createElement('button');
         backButton.innerHTML = "back";
@@ -138,7 +170,7 @@ function closeWasteCategoryWindow(){
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
 
-    document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"));
+    document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed. 
 }
 
 window.onload = () => {
