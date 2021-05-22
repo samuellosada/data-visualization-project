@@ -1,15 +1,5 @@
 
 function main(){
-    /*
-    STEPS: 
-    - create SVG area to show visualization.
-    - get the data to a working state within the context of the program.
-    - put the data into a treemap chart.
-    - Add onclick, mouseover events
-    - add second child layer of the dataset in its own window. 
-    - add design elements.
-    - add animations.
-    */
 
     //Creates SVG DOM element to insert all elements of the visualization.
     let width = 800;
