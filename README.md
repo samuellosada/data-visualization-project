@@ -4,7 +4,7 @@
 ---
 
 ## Features
-1. ** Default View: Waste Category Display in a Treemap Chart **
+1. **Default View: Waste Category Display in a Treemap Chart**
     - shows Total Waste in tonnes w/ title
     - has rectangle for every waste cateogry
     - Shows name of waste categories
@@ -21,7 +21,7 @@
             - change the year the treemap chart is analyzing into the respective selected year.
             - change the shaded in button signalizing which year is currently selected. 
 
-2. **Waste Category View: **
+2. **Waste Category View:**
     - Title of category selected and its waste amount in tonnes
     - sub headers: waste destination and waste industry sources
     - 2 single stacked bar charts: (each)
@@ -34,7 +34,7 @@
             - produces new window View -> showing the specific materials created/used 
             - adds back button
     
-3. **Material sub-Category View: **
+3. **Material sub-Category View:**
     - Title of source/destination selected and its waste amount in tonnes
     - single stacked bar chart: 
         - represents all waste sub-categories within it's rectanlges
