@@ -162,21 +162,23 @@ function main(){
                 .attr("font-size", "15px")
                 .attr("fill", "black");
 
+
     }, (err) => {
         alert(err)
     });
 }
 
 function openWasteCategoryWindow(d){
-    //prevents any functions on default window from being executed while in category view
-    currentWindow = windowEnum.categoryView;
+  if (currentWindow === windowEnum.defaultView) {
+      //prevents any functions on default window from being executed while in category view
+      currentWindow = windowEnum.categoryView;
 
-    //change visiibility of elements
-    d3.select("#wasteCategoryWindow").attr('visibility', "visible");
-    d3.select("#wasteCategoryTitle")
-        .text(d.data.name)
-        .attr('visibility', "visible");
-
+      //change visiibility of elements
+      d3.select("#wasteCategoryWindow").attr('visibility', "visible");
+      d3.select("#wasteCategoryTitle")
+          .text(d.data.name)
+          .attr('visibility', "visible");
+};
 
     //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
