@@ -2,7 +2,8 @@
 const windowEnum = Object.freeze({"defaultView":1, "categoryView":2, "typesView":3})
 // current window is the default view of the visualisation
 let currentWindow = windowEnum.defaultView;
-
+// get and saves highlighted rectangle
+let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
 
@@ -204,30 +205,41 @@ function openWasteCategoryWindow(d){
 function closeWasteCategoryWindow(){
   //reverts current window state to default
   currentWindow = windowEnum.defaultView;
-
+  d3.select(currentRect)
+  //returns colour value post-highlight
+  .style("fill", function() {
+      return currentRectColor;
+    });
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
 
     document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
+
+
 }
 
 function mouseOverFunction() {
   //can only happen if in default window
   if (currentWindow === windowEnum.defaultView) {
-    //saves last highlighted colour
+    //saves last highlighted rectangle and fill
+    currentRect = this;
     currentRectColor = this.style.fill;
     d3.select(this)
     //changes the selected rectangle to highlighted color
       .style("fill", "pink")
     };
+
 }
 
 function mouseOutFunction(d) {
+  //can only happen if in default window
+  if (currentWindow === windowEnum.defaultView) {
     d3.select(this)
     //returns colour value post-highlight
     .style("fill", function() {
         return currentRectColor;
       });
+    };
 }
 
 window.onload = () => {
