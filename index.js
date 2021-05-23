@@ -85,26 +85,36 @@ function main(){
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
                 .style("fill", function(d, i) { //colors each rectangle in the default view
-                    if (i == 0){
-                      return "#003c5c";
-                    } else if (i == 1){
-                      return "#00597c";
-                    } else if (i == 2){
-                      return "#00778e";
-                    } else if (i == 3){
-                      return "#00958f";
-                    } else if (i == 4){
-                      return "#41cb61";
-                    } else if (i == 5){
-                      return "#00b27f";
-                    } else if (i == 6){
-                      return "#a3e039";
-                    } else if (i == 7){
-                      return "#ffed00";
-                    } else if (i == 8){
-                      return "#e6eb00";
-                    } else if (i == 9){
-                      return "#482077";
+                    switch (i) {
+                      case 0:
+                        return "#003c5c";
+                        break;
+                      case 1:
+                        return "#00597c";
+                        break;
+                      case 2:
+                        return "#00778e";
+                        break;
+                      case 3:
+                        return "#00958f";
+                        break;
+                      case 4:
+                        return "#41cb61";
+                        break;
+                      case 5:
+                        return "#00b27f";
+                        break;
+                      case 6:
+                        return "#a3e039";
+                        break;
+                      case 7:
+                        return "#ffed00";
+                        break;
+                      case 8:
+                        return "#e6eb00";
+                      case 9:
+                        return "#482077";
+                        break;
                     }
                   })
                 .on('click', (event, d) => {
