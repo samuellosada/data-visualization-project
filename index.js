@@ -136,7 +136,8 @@ function main(){
                 .attr("fill", "white")
                 .on('click', (event, d) => {
                     openWasteCategoryWindow(d)
-                });
+                })
+                .style("pointer-events", "none");
 
         defaultWindow
             .selectAll("g")
@@ -150,7 +151,8 @@ function main(){
                 .attr("fill", "white")
                 .on('click', (event, d) => {
                     openWasteCategoryWindow(d)
-                });
+                })
+                .style("pointer-events", "none");
 
 
         let wasteCategoryWindow = svg.append('g')
