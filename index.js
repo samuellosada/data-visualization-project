@@ -223,14 +223,11 @@ function mouseOverFunction() {
 }
 
 function mouseOutFunction(d) {
-  //can only happen if in default window
-  if (currentWindow === windowEnum.defaultView) {
     d3.select(this)
     //returns colour value post-highlight
     .style("fill", function() {
         return currentRectColor;
       });
-  };
 }
 
 window.onload = () => {
