@@ -2,7 +2,8 @@
 const windowEnum = Object.freeze({"defaultView":1, "categoryView":2, "typesView":3})
 // current window is the default view of the visualisation
 let currentWindow = windowEnum.defaultView;
-
+// get and saves highlighted rectangle
+let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
 
@@ -86,26 +87,36 @@ function main(){
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
                 .style("fill", function(d, i) { //colors each rectangle in the default view
-                    if (i == 0){
-                      return "#003c5c";
-                    } else if (i == 1){
-                      return "#00597c";
-                    } else if (i == 2){
-                      return "#00778e";
-                    } else if (i == 3){
-                      return "#00958f";
-                    } else if (i == 4){
-                      return "#41cb61";
-                    } else if (i == 5){
-                      return "#00b27f";
-                    } else if (i == 6){
-                      return "#a3e039";
-                    } else if (i == 7){
-                      return "#ffed00";
-                    } else if (i == 8){
-                      return "#e6eb00";
-                    } else if (i == 9){
-                      return "#482077";
+                    switch (i) {
+                      case 0:
+                        return "#003c5c";
+                        break;
+                      case 1:
+                        return "#00597c";
+                        break;
+                      case 2:
+                        return "#00778e";
+                        break;
+                      case 3:
+                        return "#00958f";
+                        break;
+                      case 4:
+                        return "#41cb61";
+                        break;
+                      case 5:
+                        return "#00b27f";
+                        break;
+                      case 6:
+                        return "#a3e039";
+                        break;
+                      case 7:
+                        return "#ffed00";
+                        break;
+                      case 8:
+                        return "#e6eb00";
+                      case 9:
+                        return "#482077";
+                        break;
                     }
                   })
                 .on('click', (event, d) => {openWasteCategoryWindow(d)})
@@ -124,7 +135,8 @@ function main(){
                 .attr("fill", "white")
                 .on('click', (event, d) => {
                     openWasteCategoryWindow(d)
-                });
+                })
+                .style("pointer-events", "none");
 
         defaultWindow
             .selectAll("g")
@@ -138,7 +150,8 @@ function main(){
                 .attr("fill", "white")
                 .on('click', (event, d) => {
                     openWasteCategoryWindow(d)
-                });
+                })
+                .style("pointer-events", "none");
 
 
         let wasteCategoryWindow = svg.append('g')
@@ -161,6 +174,7 @@ function main(){
                 .attr("font-size", "15px")
                 .attr("fill", "black");
 
+
     }, (err) => {
         alert(err)
     });
@@ -171,14 +185,16 @@ function yearButtonHandler(){
 }
 
 function openWasteCategoryWindow(d){
-    //prevents any functions on default window from being executed while in category view
-    currentWindow = windowEnum.categoryView;
+  if (currentWindow === windowEnum.defaultView) {
+      //prevents any functions on default window from being executed while in category view
+      currentWindow = windowEnum.categoryView;
 
-    //change visiibility of elements
-    d3.select("#wasteCategoryWindow").attr('visibility', "visible");
-    d3.select("#wasteCategoryTitle")
-        .text(d.data.name)
-        .attr('visibility', "visible");
+      //change visiibility of elements
+      d3.select("#wasteCategoryWindow").attr('visibility', "visible");
+      d3.select("#wasteCategoryTitle")
+          .text(d.data.name)
+          .attr('visibility', "visible");
+};
 
     //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
@@ -194,22 +210,30 @@ function openWasteCategoryWindow(d){
 function closeWasteCategoryWindow(){
   //reverts current window state to default
   currentWindow = windowEnum.defaultView;
-
+  d3.select(currentRect)
+  //returns colour value post-highlight
+  .style("fill", function() {
+      return currentRectColor;
+    });
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
 
     document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
+
+
 }
 
 function mouseOverFunction() {
   //can only happen if in default window
   if (currentWindow === windowEnum.defaultView) {
-    //saves last highlighted colour
+    //saves last highlighted rectangle and fill
+    currentRect = this;
     currentRectColor = this.style.fill;
     d3.select(this)
     //changes the selected rectangle to highlighted color
       .style("fill", "pink")
     };
+
 }
 
 function mouseOutFunction(d) {
@@ -220,7 +244,7 @@ function mouseOutFunction(d) {
     .style("fill", function() {
         return currentRectColor;
       });
-  };
+    };
 }
 
 window.onload = () => {
