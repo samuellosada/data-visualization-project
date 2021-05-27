@@ -29,7 +29,9 @@ function main(){
         let button2016 = document.createElement('button');
         button2016.innerHTML = "2016";
         button2016.setAttribute('id', '2016');
-        //button2016.onclick(); Need to find a way for them to actually change the year below...
+        button2016.onclick = ()=> {
+            yearButtonHandler();
+        }
 
         let button2017 = document.createElement('button');
         button2017.innerHTML = "2017";
@@ -43,12 +45,11 @@ function main(){
         yearSelectionButtons.appendChild(button2017);
         yearSelectionButtons.appendChild(button2018);
 
-
         //takes original Json dataset and converts it so it only displays the necessary information for the first treemap chart.
         var wasteCategories2016 = { "wasteCategories" : []}
 
         for (let i = 0; i < data.years[Year[2016]].wasteCategories.length; i++){
-            var {name, totalAmount} = data.years[Year[2016]].wasteCategories[i]  //Json Destructuring syntax.
+            var {name, totalAmount} = data.years[Year[2016]].wasteCategories[i]//Json Destructuring syntax.
             wasteCategories2016.wasteCategories.push({name, totalAmount});
         }
 
@@ -59,7 +60,7 @@ function main(){
            .padding(2)
            .paddingOuter(14);
 
-        //apparently allows you to select d3 layouts for hierarchical data.
+        //allows you to select d3 layouts for hierarchical data.
         let rootNode = d3.hierarchy(wasteCategories2016, (d)=> {return d.wasteCategories}); //Need to be able to let it know under what name all the children we need are.?? MAYBE THE SOLUTION???
 
         //provides value data to the value properties added.
@@ -107,9 +108,7 @@ function main(){
                       return "#482077";
                     }
                   })
-                .on('click', (event, d) => {
-                    openWasteCategoryWindow(d)
-                })
+                .on('click', (event, d) => {openWasteCategoryWindow(d)})
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction);
 
@@ -167,6 +166,10 @@ function main(){
     });
 }
 
+function yearButtonHandler(){
+
+}
+
 function openWasteCategoryWindow(d){
     //prevents any functions on default window from being executed while in category view
     currentWindow = windowEnum.categoryView;
@@ -176,7 +179,6 @@ function openWasteCategoryWindow(d){
     d3.select("#wasteCategoryTitle")
         .text(d.data.name)
         .attr('visibility', "visible");
-
 
     //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
