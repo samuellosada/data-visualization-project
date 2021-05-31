@@ -7,15 +7,14 @@ let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
 
-const SvgSize = {width: 800, height: 800};
+const SvgSize = {width: 700, height: 700};
 
 
-//***Graph Related Functions******************************************************
+//***Graph Related Functions***************************************************************************************************
 
 function selectDataByYear(year, data){
   const Year = Object.freeze({"2016": 0, "2017": 1, "2018":2});
-
-  var yearData = { "wasteCategories" : []};
+  var yearData = { title: data.years[Year[year]].name, yearTotal: data.years[Year[year]].totalAmount, "wasteCategories" : []};
 
   for (let i = 0; i < data.years[Year[year]].wasteCategories.length; i++){
       var {name, totalAmount} = data.years[Year[year]].wasteCategories[i]//Json Destructuring syntax.
@@ -58,7 +57,28 @@ function treemapSetup(wasteCategoryData, width, height){
 }
 
 function update(rootNode, svg){
-   
+
+    console.log(document.getElementById("title").innerHTML)
+    if(document.getElementById("title").innerHTML != rootNode.data.title){
+        document.getElementById("title").innerHTML = rootNode.data.title;
+        document.getElementById("yearTotal").innerHTML = rootNode.data.yearTotal;
+    }
+
+        /*
+        let title = document.get('h1');
+        title.setAttribute("id", "title");
+        title.append(document.createTextNode(rootNode.data.title));
+        document.getElementById('visualization').append(title);
+    } else {
+        document.getElementById("title").parentElement.removeChild(document.getElementById("title"));
+
+        let title = document.createElement('h1');
+        title.setAttribute("id", "title");
+        title.append(document.createTextNode(rootNode.data.title))
+        document.getElementById('visualization').append(title);
+    }*/
+
+
     let defaultWindow;
     if(!document.getElementById("defaultWindow")){
         defaultWindow = svg.append('g').attr('id', 'defaultWindow');
@@ -239,7 +259,8 @@ function mouseOutFunction(d) {
    };
 }
 
-//***Window Handling *******************************
+//***Window Handling *************************************************************************
+
 function openWasteCategoryWindow(d){
   if (currentWindow === windowEnum.defaultView) {
     //prevents any functions on default window from being executed while in category view
