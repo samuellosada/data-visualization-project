@@ -61,23 +61,8 @@ function update(rootNode, svg){
     console.log(document.getElementById("title").innerHTML)
     if(document.getElementById("title").innerHTML != rootNode.data.title){
         document.getElementById("title").innerHTML = rootNode.data.title;
-        document.getElementById("yearTotal").innerHTML = rootNode.data.yearTotal;
+        document.getElementById("yearTotal").innerHTML = rootNode.data.yearTotal.toLocaleString('en-US') + " tonnes";
     }
-
-        /*
-        let title = document.get('h1');
-        title.setAttribute("id", "title");
-        title.append(document.createTextNode(rootNode.data.title));
-        document.getElementById('visualization').append(title);
-    } else {
-        document.getElementById("title").parentElement.removeChild(document.getElementById("title"));
-
-        let title = document.createElement('h1');
-        title.setAttribute("id", "title");
-        title.append(document.createTextNode(rootNode.data.title))
-        document.getElementById('visualization').append(title);
-    }*/
-
 
     let defaultWindow;
     if(!document.getElementById("defaultWindow")){
@@ -145,40 +130,6 @@ function update(rootNode, svg){
                 .attr('y', (d) => {return d.y0})
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
-                .style("fill", function(d, i) { //colors each rectangle in the default view
-                    switch (i) {
-                    case 0:
-                        return "#003c5c";
-                        break;
-                    case 1:
-                        return "#00597c";
-                        break;
-                    case 2:
-                        return "#00778e";
-                        break;
-                    case 3:
-                        return "#00958f";
-                        break;
-                    case 4:
-                        return "#41cb61";
-                        break;
-                    case 5:
-                        return "#00b27f";
-                        break;
-                    case 6:
-                        return "#a3e039";
-                        break;
-                    case 7:
-                        return "#ffed00";
-                        break;
-                    case 8:
-                        return "#e6eb00";
-                        break;
-                    case 9:
-                        return "#482077";
-                        break;
-                    }
-                })
             }
         )
             
@@ -232,6 +183,14 @@ function update(rootNode, svg){
             .attr("y", 60)
             .attr("font-size", "15px")
             .attr("fill", "black");
+    
+    wasteCategoryWindow
+        .append("text")
+            .attr("id", "wasteCategoryAmount")
+            .attr("x", SvgSize.width - 200)
+            .attr("y", 60)
+            .attr("font-size", "15px")
+            .attr("fill", "black");
 }
 
 //***Interactive DOM Element Functions ******************************************************
@@ -271,6 +230,11 @@ function openWasteCategoryWindow(d){
     d3.select("#wasteCategoryTitle")
         .text(d.data.name)
         .attr('visibility', "visible");
+
+    d3.select("#wasteCategoryWindow").attr('visibility', "visible");
+    d3.select("#wasteCategoryAmount")
+        .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
+        .attr('visibility', "visible")
     };
 
     //new button should only be made if one does not already exist.
@@ -294,6 +258,7 @@ function closeWasteCategoryWindow(){
     });
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
+    d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
 
     document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
 }
