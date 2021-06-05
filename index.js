@@ -9,6 +9,8 @@ let currentRectColor;
 
 const SvgSize = {width: 700, height: 700};
 
+const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
+                                    paper:"Paper & Cardboard", plastics:"Plastics", glass:"Glass", textiles:"Textiles, Leather & Rubber", other:"Other"})
 
 //***Graph Related Functions***************************************************************************************************
 
@@ -21,7 +23,7 @@ function selectDataByYear(year, data){
       yearData.wasteCategories.push({name, totalAmount});
   }
 
-  return yearData;  
+  return yearData;
 }
 
 function handleYearSelection(element, data, svg){
@@ -84,40 +86,7 @@ function update(rootNode, svg){
                 .attr('y', (d) => {return d.y0})
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
-                .style("fill", function(d, i) { //colors each rectangle in the default view
-                    switch (i) {
-                    case 0:
-                        return "#003c5c";
-                        break;
-                    case 1:
-                        return "#00597c";
-                        break;
-                    case 2:
-                        return "#00778e";
-                        break;
-                    case 3:
-                        return "#00958f";
-                        break;
-                    case 4:
-                        return "#41cb61";
-                        break;
-                    case 5:
-                        return "#00b27f";
-                        break;
-                    case 6:
-                        return "#a3e039";
-                        break;
-                    case 7:
-                        return "#ffed00";
-                        break;
-                    case 8:
-                        return "#e6eb00";
-                        break;
-                    case 9:
-                        return "#482077";
-                        break;
-                    }
-                })
+                .style("fill", colourSwitchFunction) //colors each rectangle in the default view
                 .on('click', (event, d) => {openWasteCategoryWindow(d)})
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction);
@@ -132,7 +101,7 @@ function update(rootNode, svg){
                 .attr('height', (d) => {return d.y1 - d.y0})
             }
         )
-            
+
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
@@ -163,7 +132,7 @@ function update(rootNode, svg){
             })
             .style("pointer-events", "none");
 
-    
+
     let wasteCategoryWindow = svg.append('g')
         .attr('id', "wasteCategoryWindow")
         .attr("visibility", "hidden");
@@ -183,7 +152,7 @@ function update(rootNode, svg){
             .attr("y", 60)
             .attr("font-size", "15px")
             .attr("fill", "black");
-    
+
     wasteCategoryWindow
         .append("text")
             .attr("id", "wasteCategoryAmount")
@@ -192,7 +161,41 @@ function update(rootNode, svg){
             .attr("font-size", "15px")
             .attr("fill", "black");
 }
-
+//***Colour Switch Function ******************************************************
+function colourSwitchFunction(d) {
+  switch (d.data.name) {
+  case categoryNames.masonry:
+      return "#003c5c";
+      break;
+  case categoryNames.organics:
+      return "#00597c";
+      break;
+  case categoryNames.ash:
+      return "#00778e";
+      break;
+  case categoryNames.hazardous:
+      return "#00958f";
+      break;
+  case categoryNames.metals:
+      return "#41cb61";
+      break;
+  case categoryNames.paper:
+      return "#00b27f";
+      break;
+  case categoryNames.plastics:
+      return "#a3e039";
+      break;
+  case categoryNames.glass:
+      return "#ffed00";
+      break;
+  case categoryNames.textiles:
+      return "#e6eb00";
+      break;
+  case categoryNames.other:
+      return "#482077";
+      break;
+  }
+}
 //***Interactive DOM Element Functions ******************************************************
 
 function mouseOverFunction() {
