@@ -6,9 +6,13 @@ let currentWindow = windowEnum.defaultView;
 let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
+// x and y for the moreInfo window to pop up.
+let moreInfoX = 0;
+let moreInfoY = 0;
 
 const SvgSize = {width: 700, height: 700};
 
+//enum for the switch colour scheme in default view
 const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
                                     paper:"Paper & Cardboard", plastics:"Plastics", glass:"Glass", textiles:"Textiles, Leather & Rubber", other:"Other"})
 
@@ -160,6 +164,32 @@ function update(rootNode, svg){
             .attr("y", 60)
             .attr("font-size", "15px")
             .attr("fill", "black");
+
+    let moreInfoWindow = svg.append('g')
+        .attr('id', "moreInfoWindow")
+        .attr("visibility", "hidden");
+
+    moreInfoWindow
+        .append("rect")
+            .attr('id', "moreInfoWindowRect")
+            .attr('width', 200)
+            .attr('height', 200)
+            .attr('fill', "white")
+            .style("pointer-events", "none");
+
+    moreInfoWindow
+        .append("text")
+            .attr("id", "moreInfoTitle")
+            .attr("font-size", "15px")
+            .attr("fill", "black")
+            .style("pointer-events", "none");
+
+    moreInfoWindow
+        .append("text")
+            .attr("id", "moreInfoAmount")
+            .attr("font-size", "15px")
+            .attr("fill", "black")
+            .style("pointer-events", "none");
 }
 //***Colour Switch Function ******************************************************
 function colourSwitchFunction(d) {
@@ -198,12 +228,46 @@ function colourSwitchFunction(d) {
 }
 //***Interactive DOM Element Functions ******************************************************
 
-function mouseOverFunction() {
+function mouseOverFunction(event, d) {
     //can only happen if in default window
    if (currentWindow === windowEnum.defaultView) {
-       //saves last highlighted rectangle and fill
+       //saves last highlighted rectangle and fill;
+       console.log(moreInfoX + " , " + moreInfoY);
        currentRect = this;
        currentRectColor = this.style.fill;
+
+       //Displays pop up window if the rectangle is too small
+       //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
+       if (this.getBoundingClientRect().width < 200 || this.getBoundingClientRect().height < 50) {
+
+          moreInfoX = this.getBoundingClientRect().x - 250;
+          moreInfoY = this.getBoundingClientRect().y - 250;
+
+         d3.select("#moreInfoWindow")
+           .attr('x', moreInfoX)
+           .attr('y', moreInfoY);
+
+         d3.select("#moreInfoWindowRect")
+           .attr('x', moreInfoX)
+           .attr('y', moreInfoY)
+           .attr('visibility', "visible");
+
+         d3.select("#moreInfoTitle")
+             .attr("x", moreInfoX + 20)
+             .attr("y", moreInfoY + 60)
+             .text(d.data.name)
+             .attr('visibility', "visible");
+
+         d3.select("#moreInfoWindow")
+            .attr('visibility', "visible");
+         d3.select("#moreInfoAmount")
+             .attr("x", moreInfoX + 20)
+             .attr("y", moreInfoY + 110)
+             .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
+             .attr('visibility', "visible")
+
+        };
+
        d3.select(this)
        //changes the selected rectangle to highlighted color
        .style("fill", "pink")
@@ -218,12 +282,25 @@ function mouseOutFunction(d) {
    .style("fill", function() {
        return currentRectColor;
      });
+     // hides the more info window when mouse leaves the rect
+     hideMoreInfo(d);
    };
+}
+
+function hideMoreInfo(d) {
+  //hides elements from mouse over, more info function
+  d3.select("#moreInfoWindow").attr('visibility', "hidden");
+  d3.select("#moreInfoWindowRect").attr('visibility', "hidden");
+  d3.select("#moreInfoTitle").attr('visibility', "hidden");
+  d3.select("#moreInfoAmount").attr('visibility', "hidden");
 }
 
 //***Window Handling *************************************************************************
 
 function openWasteCategoryWindow(d){
+  //prevents bug of the more info window not hiding upon opening waste categories
+  hideMoreInfo(d);
+
   if (currentWindow === windowEnum.defaultView) {
     //prevents any functions on default window from being executed while in category view
     currentWindow = windowEnum.categoryView;
@@ -263,7 +340,10 @@ function closeWasteCategoryWindow(){
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
     d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
 
-    document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
+    //prevents error when pressing the current year button on default view
+    if (currentWindow === windowEnum.categoryView) {
+      document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
+    };
 }
 
 
@@ -294,19 +374,19 @@ function main(){
         yearSelectionButtons.appendChild(button2016);
         button2016.innerHTML = "2016";
         button2016.value = 2016;
-        button2016.onclick = () => {handleYearSelection(button2016, data, svg)}
+        button2016.onclick = () => {handleYearSelection(button2016, data, svg), closeWasteCategoryWindow()}
 
         let button2017 = document.createElement('button');
         yearSelectionButtons.appendChild(button2017);
         button2017.innerHTML = "2017";
         button2017.value = 2017;
-        button2017.onclick = () => {handleYearSelection(button2017, data, svg)}
+        button2017.onclick = () => {handleYearSelection(button2017, data, svg), closeWasteCategoryWindow()}
 
         let button2018 = document.createElement('button');
         yearSelectionButtons.appendChild(button2018);
         button2018.innerHTML = "2018";
         button2018.value = 2018;
-        button2018.onclick = () => {handleYearSelection(button2018, data, svg)}
+        button2018.onclick = () => {handleYearSelection(button2018, data, svg), closeWasteCategoryWindow()}
 
     }, (err) => {
         alert(err);
