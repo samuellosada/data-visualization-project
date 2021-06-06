@@ -6,9 +6,12 @@ let currentWindow = windowEnum.defaultView;
 let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
-// x and y for the moreInfo window to pop up.
-let moreInfoX = 0;
-let moreInfoY = 0;
+
+// mouse location for more info tooltip
+let coordinates = d3.pointer(this);
+let x = coordinates[0];
+let y = coordinates[1];
+
 
 const SvgSize = {width: 700, height: 700};
 
@@ -93,7 +96,9 @@ function update(rootNode, svg){
                 .style("fill", colourSwitchFunction) //colors each rectangle in the default view
                 .on('click', (event, d) => {openWasteCategoryWindow(d)})
                 .on("mouseover", mouseOverFunction)
-                .on("mouseout", mouseOutFunction);
+                .on("mouseout", mouseOutFunction)
+                .on("mousemove", mouseMove);
+
             },
             function(update){
                 return update
@@ -165,6 +170,7 @@ function update(rootNode, svg){
             .attr("font-size", "15px")
             .attr("fill", "black");
 
+// more info tool tip window
     let moreInfoWindow = svg.append('g')
         .attr('id', "moreInfoWindow")
         .attr("visibility", "hidden");
@@ -173,9 +179,10 @@ function update(rootNode, svg){
         .append("rect")
             .attr('id', "moreInfoWindowRect")
             .attr('width', 200)
-            .attr('height', 200)
+            .attr('height', 100)
             .attr('fill', "white")
-            .style("pointer-events", "none");
+            .style("pointer-events", "none")
+            .attr("rx", "25");
 
     moreInfoWindow
         .append("text")
@@ -191,6 +198,7 @@ function update(rootNode, svg){
             .attr("fill", "black")
             .style("pointer-events", "none");
 }
+
 //***Colour Switch Function ******************************************************
 function colourSwitchFunction(d) {
   switch (d.data.name) {
@@ -232,41 +240,8 @@ function mouseOverFunction(event, d) {
     //can only happen if in default window
    if (currentWindow === windowEnum.defaultView) {
        //saves last highlighted rectangle and fill;
-       console.log(moreInfoX + " , " + moreInfoY);
        currentRect = this;
        currentRectColor = this.style.fill;
-
-       //Displays pop up window if the rectangle is too small
-       //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
-       if (this.getBoundingClientRect().width < 200 || this.getBoundingClientRect().height < 50) {
-
-          moreInfoX = this.getBoundingClientRect().x - 250;
-          moreInfoY = this.getBoundingClientRect().y - 250;
-
-         d3.select("#moreInfoWindow")
-           .attr('x', moreInfoX)
-           .attr('y', moreInfoY);
-
-         d3.select("#moreInfoWindowRect")
-           .attr('x', moreInfoX)
-           .attr('y', moreInfoY)
-           .attr('visibility', "visible");
-
-         d3.select("#moreInfoTitle")
-             .attr("x", moreInfoX + 20)
-             .attr("y", moreInfoY + 60)
-             .text(d.data.name)
-             .attr('visibility', "visible");
-
-         d3.select("#moreInfoWindow")
-            .attr('visibility', "visible");
-         d3.select("#moreInfoAmount")
-             .attr("x", moreInfoX + 20)
-             .attr("y", moreInfoY + 110)
-             .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
-             .attr('visibility', "visible")
-
-        };
 
        d3.select(this)
        //changes the selected rectangle to highlighted color
@@ -284,6 +259,43 @@ function mouseOutFunction(d) {
      });
      // hides the more info window when mouse leaves the rect
      hideMoreInfo(d);
+   };
+}
+
+//live mouse location for more info tooltip
+function mouseMove(event, d)
+{
+  var coords = d3.pointer(event);
+
+  //Displays pop up window if the rectangle is too small
+  //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
+  if (currentWindow === windowEnum.defaultView) {
+    if (this.getBoundingClientRect().width < 200 || this.getBoundingClientRect().height < 50) {
+
+      d3.select("#moreInfoWindow")
+        .attr('x', coords[0]-200)
+        .attr('y', coords[1]-100);
+
+      d3.select("#moreInfoWindowRect")
+        .attr('x', coords[0]-200)
+        .attr('y', coords[1]-100)
+        .attr('visibility', "visible");
+
+      d3.select("#moreInfoTitle")
+          .attr("x", coords[0]-200 + 20)
+          .attr("y", coords[1]-100 + 40)
+          .text(d.data.name)
+          .attr('visibility', "visible");
+
+      d3.select("#moreInfoWindow")
+         .attr('visibility', "visible");
+      d3.select("#moreInfoAmount")
+          .attr("x", coords[0]-200 + 20)
+          .attr("y", coords[1]-100 + 60)
+          .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
+          .attr('visibility', "visible")
+
+     };
    };
 }
 
