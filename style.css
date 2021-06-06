@@ -1,0 +1,9 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  width: calc(100% - 4em);
+  margin: 2em;
+}
+
+button {
+  border-radius: 25px;
+}

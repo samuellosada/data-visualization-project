@@ -97,7 +97,7 @@ function update(rootNode, svg){
                 .on('click', (event, d) => {openWasteCategoryWindow(d)})
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction)
-                .on("mousemove", mouseMove);
+                .on("mousemove", mouseMoveFunction);
 
             },
             function(update){
@@ -263,7 +263,7 @@ function mouseOutFunction(d) {
 }
 
 //live mouse location for more info tooltip
-function mouseMove(event, d)
+function mouseMoveFunction(event, d)
 {
   var coords = d3.pointer(event);
 
@@ -332,7 +332,7 @@ function openWasteCategoryWindow(d){
     //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
         let backButton = document.createElement('button');
-        backButton.innerHTML = "back";
+        backButton.innerHTML = "&#10006"; // unicode for x symbol
         backButton.setAttribute('id', "backButton");
         backButton.onclick = () => {closeWasteCategoryWindow()};
 
