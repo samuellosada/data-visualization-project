@@ -160,6 +160,7 @@ function update(rootNode, svg){
             .attr("x", 60)
             .attr("y", 60)
             .attr("font-size", "15px")
+            .attr("font-weight", "700")
             .attr("fill", "black");
 
     wasteCategoryWindow
@@ -168,6 +169,7 @@ function update(rootNode, svg){
             .attr("x", SvgSize.width - 200)
             .attr("y", 60)
             .attr("font-size", "15px")
+            .attr("font-weight", "700")
             .attr("fill", "black");
 
 // more info tool tip window
@@ -353,9 +355,9 @@ function closeWasteCategoryWindow(){
     d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
 
     //prevents error when pressing the current year button on default view
-    if (currentWindow === windowEnum.categoryView) {
+    // if (currentWindow === windowEnum.categoryView) {
       document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
-    };
+    // };
 }
 
 
