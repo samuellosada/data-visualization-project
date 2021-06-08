@@ -6,6 +6,9 @@ let currentWindow = windowEnum.defaultView;
 let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
+// makes data accessable for percantage function as variables
+let importedData;
+let selectedYear = 2016;
 
 // mouse location for more info tooltip
 let coordinates = d3.pointer(this);
@@ -38,6 +41,8 @@ function selectDataByYear(year, data){
 
 function handleYearSelection(element, data, svg){
     let yearData = selectDataByYear(element.value, data);
+
+    selectedYear = element.value;
 
     let rootNode = treemapSetup(yearData, SvgSize.width, SvgSize.height)
 
@@ -114,7 +119,6 @@ function update(rootNode, svg){
             }
         )
 
-
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
@@ -130,12 +134,11 @@ function update(rootNode, svg){
               return nameManagerFunction(d)
             }) //data is used to access the leaf node properties.
             .attr("font-size", "15px")
-            .attr("fill", "white")
+            .attr("fill", textColourSwitchFunction)
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d)
             })
             .style("pointer-events", "none");
-
 
     defaultWindow
         .selectAll("g")
@@ -152,7 +155,28 @@ function update(rootNode, svg){
               return amountManagerFunction(d)
             })
             .attr("font-size", "15px")
-            .attr("fill", "white")
+            .attr("fill", textColourSwitchFunction)
+            .on('click', (event, d) => {
+                openWasteCategoryWindow(d)
+            })
+            .style("pointer-events", "none");
+
+    defaultWindow
+        .selectAll("g")
+        .data(rootNode.leaves())
+        .enter()
+            .append("text")
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0, d.x1, `10%`);
+             })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `10%`, 20);
+            })
+            .text((d) => {
+              return getPercentageFunction(d);
+            })
+            .attr("font-size", "15px")
+            .attr("fill", textColourSwitchFunction)
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d)
             })
@@ -169,7 +193,7 @@ function update(rootNode, svg){
             .attr('y', 30)
             .attr('width', SvgSize.width - 60)
             .attr('height', SvgSize.height - 60)
-            .attr('fill', "white")
+            .attr('fill', "white");
 
     wasteCategoryWindow
         .append("text")
@@ -230,6 +254,15 @@ function centreTextFunction(p0, p1, text, yDiff) {
   }
 }
 
+//***Get Percentage Function ******************************************************
+function getPercentageFunction(d) {
+  let yearData = selectDataByYear(selectedYear, importedData); //gets current year data in visualisation
+
+  const amount = d.data.totalAmount; //amount of data per category
+  const amountTotal = yearData.yearTotal; //total year data
+
+  return `${Math.floor(amount / amountTotal * 100)}%`;
+}
 
 //***Text Manager Function ******************************************************
 //if rectangles are too small to display text, return nothing
@@ -252,7 +285,7 @@ function amountManagerFunction(d) {
   }
 }
 
-//***Colour Switch Function ******************************************************
+//***Colour Switch Functions ******************************************************
 function colourSwitchFunction(d) {
   switch (d.data.name) {
   case categoryNames.masonry:
@@ -284,6 +317,40 @@ function colourSwitchFunction(d) {
       break;
   case categoryNames.other:
       return "#482077";
+      break;
+  }
+}
+function textColourSwitchFunction(d) {
+  switch (d.data.name) {
+  case categoryNames.masonry:
+      return "#F5F5F5";
+      break;
+  case categoryNames.organics:
+      return "#F5F5F5";
+      break;
+  case categoryNames.ash:
+      return "#F5F5F5";
+      break;
+  case categoryNames.hazardous:
+      return "#F5F5F5";
+      break;
+  case categoryNames.metals:
+      return "#F5F5F5";
+      break;
+  case categoryNames.paper:
+      return "#F5F5F5";
+      break;
+  case categoryNames.plastics:
+      return "#000000";
+      break;
+  case categoryNames.glass:
+      return "#000000";
+      break;
+  case categoryNames.textiles:
+      return "#000000";
+      break;
+  case categoryNames.other:
+      return "#F5F5F5";
       break;
   }
 }
@@ -347,7 +414,6 @@ function mouseMoveFunction(event, d)
           .attr("y", coords[1]-100 + 60)
           .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
           .attr('visibility', "visible")
-
      };
    };
 }
@@ -423,6 +489,7 @@ function main(){
     //load json data send it to where it can be turned into a treemap chart.
     d3.json("wasteData.json").then ((data) => {
 
+        importedData = data
         //takes original Json dataset and converts it so it only displays the necessary information for the first treemap chart.
         let wasteCategoryData = selectDataByYear("2016", data);
 
