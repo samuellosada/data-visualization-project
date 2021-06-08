@@ -12,6 +12,9 @@ let coordinates = d3.pointer(this);
 let x = coordinates[0];
 let y = coordinates[1];
 
+const rectWidth = 200;
+const rectHeight = 50;
+
 
 const SvgSize = {width: 700, height: 700};
 
@@ -111,14 +114,21 @@ function update(rootNode, svg){
             }
         )
 
+
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
         .enter()
             .append("text")
-            .attr("x", (d) => {return d.x0 + 5})
-            .attr("y", (d) => {return d.y0 + 20})
-            .text((d) => {return d.data.name}) //data is used to access the leaf node properties.
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0+10, d.x1, `${d.data.name}`);
+            })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `${d.data.name}`, -20);
+            })
+            .text((d) => {
+              return nameManagerFunction(d)
+            }) //data is used to access the leaf node properties.
             .attr("font-size", "15px")
             .attr("fill", "white")
             .on('click', (event, d) => {
@@ -126,14 +136,21 @@ function update(rootNode, svg){
             })
             .style("pointer-events", "none");
 
+
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
         .enter()
             .append("text")
-            .attr("x", (d) => {return d.x0 + 5})
-            .attr("y", (d) => {return d.y0 + 50})
-            .text((d) => {return d.data.totalAmount.toLocaleString('en-US') + " tonnes"})
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0, d.x1, `${d.data.totalAmount} tonnes`);
+             })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `${d.data.totalAmount} tonnes`, 0);
+            })
+            .text((d) => {
+              return amountManagerFunction(d)
+            })
             .attr("font-size", "15px")
             .attr("fill", "white")
             .on('click', (event, d) => {
@@ -199,6 +216,40 @@ function update(rootNode, svg){
             .attr("font-size", "15px")
             .attr("fill", "black")
             .style("pointer-events", "none");
+}
+
+//***Centre Text Function ******************************************************
+function centreTextFunction(p0, p1, text, yDiff) {
+  const letterWidth = 8;
+  const centrePoint = (p1 - p0) / 2;
+  const centreOfText = text.length * letterWidth / 2;
+  if (yDiff !== undefined) {
+    return p0 + centrePoint + yDiff;
+  } else {
+    return p0 + centrePoint - centreOfText;
+  }
+}
+
+
+//***Text Manager Function ******************************************************
+//if rectangles are too small to display text, return nothing
+function nameManagerFunction(d) {
+  if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
+    return null;
+  }
+  else {
+    return d.data.name;
+  }
+}
+
+function amountManagerFunction(d) {
+  if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
+    return null;
+  }
+  else
+  {
+    return d.data.totalAmount.toLocaleString('en-US') + " tonnes";
+  }
 }
 
 //***Colour Switch Function ******************************************************
@@ -272,7 +323,7 @@ function mouseMoveFunction(event, d)
   //Displays pop up window if the rectangle is too small
   //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
   if (currentWindow === windowEnum.defaultView) {
-    if (this.getBoundingClientRect().width < 200 || this.getBoundingClientRect().height < 50) {
+    if (this.getBoundingClientRect().width < rectWidth || this.getBoundingClientRect().height < rectHeight) {
 
       d3.select("#moreInfoWindow")
         .attr('x', coords[0]-200)

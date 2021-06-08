@@ -1,7 +1,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   width: calc(100% - 4em);
-  margin: 2em;
+  margin: 1em;
+  text-align: center;
 }
 
 button {
