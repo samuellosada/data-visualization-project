@@ -1,5 +1,5 @@
 // this represents the states the window of the visualisation can be in
-const windowEnum = Object.freeze({"defaultView":1, "categoryView":2, "typesView":3})
+const windowEnum = Object.freeze({"defaultView":1, "categoryView":2, "typesView":3});
 // current window is the default view of the visualisation
 let currentWindow = windowEnum.defaultView;
 // get and saves highlighted rectangle
@@ -9,6 +9,8 @@ let currentRectColor;
 
 const SvgSize = {width: 700, height: 700};
 
+let selectedWasteCategory;
+
 
 //***Graph Related Functions***************************************************************************************************
 
@@ -17,19 +19,21 @@ function selectDataByYear(year, data){
   var yearData = { title: data.years[Year[year]].name, yearTotal: data.years[Year[year]].totalAmount, "wasteCategories" : []};
 
   for (let i = 0; i < data.years[Year[year]].wasteCategories.length; i++){
-      var {name, totalAmount} = data.years[Year[year]].wasteCategories[i]//Json Destructuring syntax.
-      yearData.wasteCategories.push({name, totalAmount});
+      var {name, totalAmount, wasteIndustrySources, wasteDestinations} = data.years[Year[year]].wasteCategories[i]//Json Destructuring syntax.
+      yearData.wasteCategories.push({name, totalAmount, wasteIndustrySources, wasteDestinations});
   }
 
   return yearData;  
 }
 
 function handleYearSelection(element, data, svg){
-    let yearData = selectDataByYear(element.value, data);
+    closeWasteCategoryWindow()
 
-    let rootNode = treemapSetup(yearData, SvgSize.width, SvgSize.height)
+    let treemapYearData = selectDataByYear(element.value, data);
 
-    update(rootNode, svg);
+    let treemapRootNode = treemapSetup(treemapYearData, SvgSize.width, SvgSize.height)
+
+    update(treemapRootNode, svg);
 }
 
 function treemapSetup(wasteCategoryData, width, height){
@@ -56,14 +60,7 @@ function treemapSetup(wasteCategoryData, width, height){
     return rootNode;
 }
 
-function update(rootNode, svg){
-
-    console.log(document.getElementById("title").innerHTML)
-    if(document.getElementById("title").innerHTML != rootNode.data.title){
-        document.getElementById("title").innerHTML = rootNode.data.title;
-        document.getElementById("yearTotal").innerHTML = rootNode.data.yearTotal.toLocaleString('en-US') + " tonnes";
-    }
-
+function updateDefaultWindow(rootNode, svg){
     let defaultWindow;
     if(!document.getElementById("defaultWindow")){
         defaultWindow = svg.append('g').attr('id', 'defaultWindow');
@@ -118,14 +115,13 @@ function update(rootNode, svg){
                         break;
                     }
                 })
-                .on('click', (event, d) => {openWasteCategoryWindow(d)})
+                .on('click', (event, d) => {openWasteCategoryWindow(d, svg)})
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction);
             },
             function(update){
                 return update
                 .append("rect")
-                .attr('class', 'rect')
                 .attr('x', (d) => {return d.x0})
                 .attr('y', (d) => {return d.y0})
                 .attr('width', (d) => {return d.x1 - d.x0})
@@ -144,7 +140,7 @@ function update(rootNode, svg){
             .attr("font-size", "15px")
             .attr("fill", "white")
             .on('click', (event, d) => {
-                openWasteCategoryWindow(d)
+                openWasteCategoryWindow(d, svg)
             })
             .style("pointer-events", "none");
 
@@ -159,22 +155,50 @@ function update(rootNode, svg){
             .attr("font-size", "15px")
             .attr("fill", "white")
             .on('click', (event, d) => {
-                openWasteCategoryWindow(d)
+                openWasteCategoryWindow(d, svg)
             })
             .style("pointer-events", "none");
+}
 
-    
-    let wasteCategoryWindow = svg.append('g')
+function selectWasteCategoryGraphData(searchedArray){
+    var rootNode = [];
+
+    let count = 0;
+    for(let i = 0; i < searchedArray.length; i++){
+        var { name, totalAmount } = searchedArray[i];
+
+        let value = totalAmount; 
+        let x0 = count;
+        let x1 = count + value;
+        count += value;
+
+        rootNode.push({name, value, x0, x1});
+    }
+    //NEED TO FIX THE SORTING FUNCTION IT IS NOT ACTUALLY CHANGING THE ROOTNODE ****************************
+    rootNode.sort((a, b) => {
+        return d3.ascending(a.value, b.value)
+    });
+    return rootNode
+}     
+
+function updateWasteCategoryWindow(data, svg){
+
+    let wasteCategoryWindow;
+    if(!document.getElementById("wasteCategoryWindow")){
+        wasteCategoryWindow = svg.append('g')
         .attr('id', "wasteCategoryWindow")
         .attr("visibility", "hidden");
 
-    wasteCategoryWindow
+        wasteCategoryWindow
         .append("rect")
             .attr('x', 30)
             .attr('y', 30)
             .attr('width', SvgSize.width - 60)
             .attr('height', SvgSize.height - 60)
             .attr('fill', "white")
+    } else {
+        wasteCategoryWindow = d3.select("#wasteCategoryWindow");
+    }   
 
     wasteCategoryWindow
         .append("text")
@@ -182,7 +206,7 @@ function update(rootNode, svg){
             .attr("x", 60)
             .attr("y", 60)
             .attr("font-size", "15px")
-            .attr("fill", "black");
+            .attr("fill", "black")
     
     wasteCategoryWindow
         .append("text")
@@ -190,7 +214,84 @@ function update(rootNode, svg){
             .attr("x", SvgSize.width - 200)
             .attr("y", 60)
             .attr("font-size", "15px")
-            .attr("fill", "black");
+            .attr("fill", "black")
+
+    wasteCategoryWindow
+        .append("text")
+            .text("Industry Sources:")
+            .attr("class", "barChartTitle")
+            .attr("x", 60)
+            .attr("y", 150)
+            .attr("font-size", "15px")
+            .attr("fill", "black")
+
+        wasteCategoryWindow
+            .append("text")
+                .text("Waste Destinations:")
+                .attr("class", "barChartTitle")
+                .attr("x", 60)
+                .attr("y", 400)
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+    
+    if(data){
+        let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
+
+        x = d3.scaleLinear()
+            .domain([d3.min(industrySourceRootNode, d => d.x0), d3.max(industrySourceRootNode, d => d.x1)])
+            .range([60, SvgSize.width - 60])
+
+        wasteCategoryWindow
+            .selectAll(".rect2")
+            .data(industrySourceRootNode, d => d.value)
+            .join(
+                function(enter){
+                    return enter
+                    .append('rect')
+                    .attr('class', "rect2")
+                    .attr("x", d => {
+                        return x(d.x0)
+                    }) 
+                    .attr("y", 200)
+                    .attr("width", d => {
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                    })
+                    .attr("height", 120)
+                    .style("fill", "blue")
+                }
+            )
+        
+        let wasteDestinationRootNode = selectWasteCategoryGraphData(data.data.wasteDestinations);
+
+        wasteCategoryWindow
+            .selectAll(".rect3")
+            .data(wasteDestinationRootNode, d => d.value)
+            .join(
+                function(enter){
+                    return enter
+                    .append('rect')
+                    .attr('class', "rect3")
+                    .attr("x", d => {
+                        return x(d.x0)
+                    }) 
+                    .attr("y", 450)
+                    .attr("width", d => {
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                    })
+                    .attr("height", 120)
+                    .style("fill", "blue")
+                }
+            )
+    }
+}
+
+function update(rootNode, svg){
+    if(document.getElementById("title").innerHTML != rootNode.data.title){
+        document.getElementById("title").innerHTML = rootNode.data.title;
+        document.getElementById("yearTotal").innerHTML = rootNode.data.yearTotal.toLocaleString('en-US') + " tonnes";
+    }
+
+    updateDefaultWindow(rootNode, svg);
 }
 
 //***Interactive DOM Element Functions ******************************************************
@@ -220,10 +321,15 @@ function mouseOutFunction(d) {
 
 //***Window Handling *************************************************************************
 
-function openWasteCategoryWindow(d){
+function openWasteCategoryWindow(d, svg){
   if (currentWindow === windowEnum.defaultView) {
     //prevents any functions on default window from being executed while in category view
     currentWindow = windowEnum.categoryView;
+
+    selectedWasteCategory = d.data.name;
+
+    //rootNode = selectWasteCategoryIndustrySourceData(d.data.wasteIndustrySources);
+    updateWasteCategoryWindow(d, svg);
 
     //change visiibility of elements
     d3.select("#wasteCategoryWindow").attr('visibility', "visible");
@@ -246,6 +352,7 @@ function openWasteCategoryWindow(d){
 
         document.getElementById('visualization').appendChild(backButton);
     }
+
 }
 
 function closeWasteCategoryWindow(){
@@ -260,7 +367,11 @@ function closeWasteCategoryWindow(){
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
     d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
 
-    document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton")); //deletes back button when the window is closed.
+    if(document.getElementById("backButton")){
+        document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"))
+    } 
+
+    //selectedWasteCategory = null;
 }
 
 
@@ -280,6 +391,7 @@ function main(){
 
         //creates a rootNode with a treemap format with the data selected.
         let rootNode = treemapSetup(wasteCategoryData, SvgSize.width, SvgSize.height);
+
 
         //updates all elements depending on the data given to it.
         update(rootNode, svg);
