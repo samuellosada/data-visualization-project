@@ -24,7 +24,7 @@ button:active{
   background-color: #fafafa;
   width: 700px;
   height: 700px;
-  padding: 2rem;
-  margin: auto;
+  padding: 50px;
+  margin: auto auto;
 
 }

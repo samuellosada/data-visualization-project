@@ -460,13 +460,13 @@ function textColourSwitchFunction(d) {
 function mouseOverFunction(event, d) {
     //can only happen if in default window
    if (currentWindow === windowEnum.defaultView) {
-       //saves last highlighted rectangle and fill;
-       currentRect = this;
-       currentRectColor = this.style.fill;
+        //saves last highlighted rectangle and fill;
+        currentRect = this;
+        currentRectColor = this.style.fill;
 
-       d3.select(this)
-       //changes the selected rectangle to highlighted color
-       .style("fill", "pink")
+        d3.select(this)
+        //changes the selected rectangle to highlighted color
+        .style("fill", d3.color(currentRectColor).darker(1).formatHex())
    }
 }
 
