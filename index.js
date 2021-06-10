@@ -6,11 +6,26 @@ let currentWindow = windowEnum.defaultView;
 let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
+// makes data accessable for percantage function as variables
+let importedData;
+let selectedYear = 2016;
+
+// mouse location for more info tooltip
+let coordinates = d3.pointer(this);
+let x = coordinates[0];
+let y = coordinates[1];
+
+const rectWidth = 200;
+const rectHeight = 50;
+
 
 const SvgSize = {width: 700, height: 700};
 
 let selectedWasteCategory;
 
+//enum for the switch colour scheme in default view
+const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
+                                    paper:"Paper & Cardboard", plastics:"Plastics", glass:"Glass", textiles:"Textiles, Leather & Rubber", other:"Other"})
 
 //***Graph Related Functions***************************************************************************************************
 
@@ -23,13 +38,15 @@ function selectDataByYear(year, data){
       yearData.wasteCategories.push({name, totalAmount, wasteIndustrySources, wasteDestinations});
   }
 
-  return yearData;  
+  return yearData;
 }
 
 function handleYearSelection(element, data, svg){
     closeWasteCategoryWindow()
 
     let treemapYearData = selectDataByYear(element.value, data);
+
+    selectedYear = element.value;
 
     let treemapRootNode = treemapSetup(treemapYearData, SvgSize.width, SvgSize.height)
 
@@ -81,43 +98,12 @@ function updateDefaultWindow(rootNode, svg){
                 .attr('y', (d) => {return d.y0})
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
-                .style("fill", function(d, i) { //colors each rectangle in the default view
-                    switch (i) {
-                    case 0:
-                        return "#003c5c";
-                        break;
-                    case 1:
-                        return "#00597c";
-                        break;
-                    case 2:
-                        return "#00778e";
-                        break;
-                    case 3:
-                        return "#00958f";
-                        break;
-                    case 4:
-                        return "#41cb61";
-                        break;
-                    case 5:
-                        return "#00b27f";
-                        break;
-                    case 6:
-                        return "#a3e039";
-                        break;
-                    case 7:
-                        return "#ffed00";
-                        break;
-                    case 8:
-                        return "#e6eb00";
-                        break;
-                    case 9:
-                        return "#482077";
-                        break;
-                    }
-                })
+                .style("fill", colourSwitchFunction) //colors each rectangle in the default view
                 .on('click', (event, d) => {openWasteCategoryWindow(d, svg)})
                 .on("mouseover", mouseOverFunction)
-                .on("mouseout", mouseOutFunction);
+                .on("mouseout", mouseOutFunction)
+                .on("mousemove", mouseMoveFunction);
+
             },
             function(update){
                 return update
@@ -128,17 +114,23 @@ function updateDefaultWindow(rootNode, svg){
                 .attr('height', (d) => {return d.y1 - d.y0})
             }
         )
-            
+
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
         .enter()
             .append("text")
-            .attr("x", (d) => {return d.x0 + 5})
-            .attr("y", (d) => {return d.y0 + 20})
-            .text((d) => {return d.data.name}) //data is used to access the leaf node properties.
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0+10, d.x1, `${d.data.name}`);
+            })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `${d.data.name}`, -20);
+            })
+            .text((d) => {
+              return nameManagerFunction(d)
+            }) //data is used to access the leaf node properties.
             .attr("font-size", "15px")
-            .attr("fill", "white")
+            .attr("fill", textColourSwitchFunction)
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d, svg)
             })
@@ -149,14 +141,69 @@ function updateDefaultWindow(rootNode, svg){
         .data(rootNode.leaves())
         .enter()
             .append("text")
-            .attr("x", (d) => {return d.x0 + 5})
-            .attr("y", (d) => {return d.y0 + 50})
-            .text((d) => {return d.data.totalAmount.toLocaleString('en-US') + " tonnes"})
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0, d.x1, `${d.data.totalAmount} tonnes`);
+             })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `${d.data.totalAmount} tonnes`, 0);
+            })
+            .text((d) => {
+              return amountManagerFunction(d)
+            })
             .attr("font-size", "15px")
-            .attr("fill", "white")
+            .attr("fill", textColourSwitchFunction)
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d, svg)
             })
+            .style("pointer-events", "none");
+
+    defaultWindow
+        .selectAll("g")
+        .data(rootNode.leaves())
+        .enter()
+            .append("text")
+            .attr("x", (d) => {
+              return centreTextFunction(d.x0, d.x1, `10%`);
+             })
+            .attr("y", (d) => {
+              return centreTextFunction(d.y0, d.y1, `10%`, 20);
+            })
+            .text((d) => {
+              return getPercentageFunction(d);
+            })
+            .attr("font-size", "15px")
+            .attr("fill", textColourSwitchFunction)
+            .on('click', (event, d) => {
+                openWasteCategoryWindow(d, svg)
+            })
+            .style("pointer-events", "none");
+
+    // more info tool tip window
+    let moreInfoWindow = svg.append('g')
+        .attr('id', "moreInfoWindow")
+        .attr("visibility", "hidden");
+
+    moreInfoWindow
+        .append("rect")
+            .attr('id', "moreInfoWindowRect")
+            .attr('width', 200)
+            .attr('height', 100)
+            .attr('fill', "white")
+            .style("pointer-events", "none")
+            .attr("rx", "25");
+
+    moreInfoWindow
+        .append("text")
+            .attr("id", "moreInfoTitle")
+            .attr("font-size", "15px")
+            .attr("fill", "black")
+            .style("pointer-events", "none");
+
+    moreInfoWindow
+        .append("text")
+            .attr("id", "moreInfoAmount")
+            .attr("font-size", "15px")
+            .attr("fill", "black")
             .style("pointer-events", "none");
 }
 
@@ -206,15 +253,17 @@ function updateWasteCategoryWindow(data, svg){
             .attr("x", 60)
             .attr("y", 60)
             .attr("font-size", "15px")
-            .attr("fill", "black")
-    
+            .attr("font-weight", "700")
+            .attr("fill", "black");
+
     wasteCategoryWindow
         .append("text")
             .attr("id", "wasteCategoryAmount")
             .attr("x", SvgSize.width - 200)
             .attr("y", 60)
             .attr("font-size", "15px")
-            .attr("fill", "black")
+            .attr("font-weight", "700")
+            .attr("fill", "black");
 
     wasteCategoryWindow
         .append("text")
@@ -294,18 +343,131 @@ function update(rootNode, svg){
     updateDefaultWindow(rootNode, svg);
 }
 
+//***Centre Text Function ******************************************************
+function centreTextFunction(p0, p1, text, yDiff) {
+    const letterWidth = 8;
+    const centrePoint = (p1 - p0) / 2;
+    const centreOfText = text.length * letterWidth / 2;
+    if (yDiff !== undefined) {
+        return p0 + centrePoint + yDiff;
+    } else {
+        return p0 + centrePoint - centreOfText;
+    }
+}
+  
+  //***Get Percentage Function ******************************************************
+function getPercentageFunction(d) {
+    let yearData = selectDataByYear(selectedYear, importedData); //gets current year data in visualisation
+
+    const amount = d.data.totalAmount; //amount of data per category
+    const amountTotal = yearData.yearTotal; //total year data
+
+    return `${Math.floor(amount / amountTotal * 100)}%`;
+}
+  
+  //***Text Manager Function ******************************************************
+  //if rectangles are too small to display text, return nothing
+function nameManagerFunction(d) {
+    if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
+        return null;
+    }
+    else {
+        return d.data.name;
+    }
+}
+  
+function amountManagerFunction(d) {
+    if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
+      return null;
+    }
+    else
+    {
+      return d.data.totalAmount.toLocaleString('en-US') + " tonnes";
+    }
+}
+
+//***Colour Switch Functions ******************************************************
+function colourSwitchFunction(d) {
+    switch (d.data.name) {
+        case categoryNames.masonry:
+            return "#003c5c";
+            break;
+        case categoryNames.organics:
+            return "#00597c";
+            break;
+        case categoryNames.ash:
+            return "#00778e";
+            break;
+        case categoryNames.hazardous:
+            return "#00958f";
+            break;
+        case categoryNames.metals:
+            return "#41cb61";
+            break;
+        case categoryNames.paper:
+            return "#00b27f";
+            break;
+        case categoryNames.plastics:
+            return "#a3e039";
+            break;
+        case categoryNames.glass:
+            return "#ffed00";
+            break;
+        case categoryNames.textiles:
+            return "#e6eb00";
+            break;
+        case categoryNames.other:
+            return "#482077";
+            break;
+    }
+}
+function textColourSwitchFunction(d) {
+    switch (d.data.name) {
+        case categoryNames.masonry:
+            return "#F5F5F5";
+            break;
+        case categoryNames.organics:
+            return "#F5F5F5";
+            break;
+        case categoryNames.ash:
+            return "#F5F5F5";
+            break;
+        case categoryNames.hazardous:
+            return "#F5F5F5";
+            break;
+        case categoryNames.metals:
+            return "#F5F5F5";
+            break;
+        case categoryNames.paper:
+            return "#F5F5F5";
+            break;
+        case categoryNames.plastics:
+            return "#000000";
+            break;
+        case categoryNames.glass:
+            return "#000000";
+            break;
+        case categoryNames.textiles:
+            return "#000000";
+            break;
+        case categoryNames.other:
+            return "#F5F5F5";
+            break;
+    }
+}
 //***Interactive DOM Element Functions ******************************************************
 
-function mouseOverFunction() {
+function mouseOverFunction(event, d) {
     //can only happen if in default window
    if (currentWindow === windowEnum.defaultView) {
-       //saves last highlighted rectangle and fill
+       //saves last highlighted rectangle and fill;
        currentRect = this;
        currentRectColor = this.style.fill;
+
        d3.select(this)
        //changes the selected rectangle to highlighted color
        .style("fill", "pink")
-   };
+   }
 }
 
 function mouseOutFunction(d) {
@@ -316,12 +478,60 @@ function mouseOutFunction(d) {
    .style("fill", function() {
        return currentRectColor;
      });
+     // hides the more info window when mouse leaves the rect
+     hideMoreInfo(d);
    };
+}
+
+//live mouse location for more info tooltip
+function mouseMoveFunction(event, d) {
+  var coords = d3.pointer(event);
+
+  //Displays pop up window if the rectangle is too small
+  //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
+  if (currentWindow === windowEnum.defaultView) {
+    if (this.getBoundingClientRect().width < rectWidth || this.getBoundingClientRect().height < rectHeight) {
+
+      d3.select("#moreInfoWindow")
+        .attr('x', coords[0]-200)
+        .attr('y', coords[1]-100);
+
+      d3.select("#moreInfoWindowRect")
+        .attr('x', coords[0]-200)
+        .attr('y', coords[1]-100)
+        .attr('visibility', "visible");
+
+      d3.select("#moreInfoTitle")
+          .attr("x", coords[0]-200 + 20)
+          .attr("y", coords[1]-100 + 40)
+          .text(d.data.name)
+          .attr('visibility', "visible");
+
+      d3.select("#moreInfoWindow")
+         .attr('visibility', "visible");
+      d3.select("#moreInfoAmount")
+          .attr("x", coords[0]-200 + 20)
+          .attr("y", coords[1]-100 + 60)
+          .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
+          .attr('visibility', "visible")
+     }
+   }
+}
+
+function hideMoreInfo(d) {
+  //hides elements from mouse over, more info function
+  d3.select("#moreInfoWindow").attr('visibility', "hidden");
+  d3.select("#moreInfoWindowRect").attr('visibility', "hidden");
+  d3.select("#moreInfoTitle").attr('visibility', "hidden");
+  d3.select("#moreInfoAmount").attr('visibility', "hidden");
 }
 
 //***Window Handling *************************************************************************
 
 function openWasteCategoryWindow(d, svg){
+  //prevents bug of the more info window not hiding upon opening waste categories
+  hideMoreInfo(d);
+
   if (currentWindow === windowEnum.defaultView) {
     //prevents any functions on default window from being executed while in category view
     currentWindow = windowEnum.categoryView;
@@ -346,7 +556,7 @@ function openWasteCategoryWindow(d, svg){
     //new button should only be made if one does not already exist.
     if (!document.getElementById('backButton')){
         let backButton = document.createElement('button');
-        backButton.innerHTML = "back";
+        backButton.innerHTML = "&#10006"; // unicode for x symbol
         backButton.setAttribute('id', "backButton");
         backButton.onclick = () => {closeWasteCategoryWindow()};
 
@@ -371,7 +581,7 @@ function closeWasteCategoryWindow(){
         document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"))
     } 
 
-    //selectedWasteCategory = null;
+    selectedWasteCategory = null;
 }
 
 
@@ -386,6 +596,7 @@ function main(){
     //load json data send it to where it can be turned into a treemap chart.
     d3.json("wasteData.json").then ((data) => {
 
+        importedData = data
         //takes original Json dataset and converts it so it only displays the necessary information for the first treemap chart.
         let wasteCategoryData = selectDataByYear("2016", data);
 
@@ -403,19 +614,19 @@ function main(){
         yearSelectionButtons.appendChild(button2016);
         button2016.innerHTML = "2016";
         button2016.value = 2016;
-        button2016.onclick = () => {handleYearSelection(button2016, data, svg)}
+        button2016.onclick = () => {handleYearSelection(button2016, data, svg), closeWasteCategoryWindow()}
 
         let button2017 = document.createElement('button');
         yearSelectionButtons.appendChild(button2017);
         button2017.innerHTML = "2017";
         button2017.value = 2017;
-        button2017.onclick = () => {handleYearSelection(button2017, data, svg)}
+        button2017.onclick = () => {handleYearSelection(button2017, data, svg), closeWasteCategoryWindow()}
 
         let button2018 = document.createElement('button');
         yearSelectionButtons.appendChild(button2018);
         button2018.innerHTML = "2018";
         button2018.value = 2018;
-        button2018.onclick = () => {handleYearSelection(button2018, data, svg)}
+        button2018.onclick = () => {handleYearSelection(button2018, data, svg), closeWasteCategoryWindow()}
 
     }, (err) => {
         alert(err);
