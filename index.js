@@ -303,7 +303,7 @@ function updateWasteCategoryWindow(data, svg){
                     }) 
                     .attr("y", 175)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", 120)
                     .style("fill", "blue")
