@@ -98,7 +98,7 @@ function updateDefaultWindow(rootNode, svg){
                 .attr('y', (d) => {return d.y0})
                 .attr('width', (d) => {return d.x1 - d.x0})
                 .attr('height', (d) => {return d.y1 - d.y0})
-                .style("fill", colourSwitchFunction) //colors each rectangle in the default view
+                .style("fill", d => colourSwitchFunction(d)) //colors each rectangle in the default view
                 .on('click', (event, d) => {openWasteCategoryWindow(d, svg)})
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction)
@@ -130,7 +130,7 @@ function updateDefaultWindow(rootNode, svg){
               return nameManagerFunction(d)
             }) //data is used to access the leaf node properties.
             .attr("font-size", "15px")
-            .attr("fill", textColourSwitchFunction)
+            .attr("fill", d => textColourSwitchFunction(d))
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d, svg)
             })
@@ -151,7 +151,7 @@ function updateDefaultWindow(rootNode, svg){
               return amountManagerFunction(d)
             })
             .attr("font-size", "15px")
-            .attr("fill", textColourSwitchFunction)
+            .attr("fill", d => textColourSwitchFunction(d))
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d, svg)
             })
@@ -172,7 +172,7 @@ function updateDefaultWindow(rootNode, svg){
               return getPercentageFunction(d);
             })
             .attr("font-size", "15px")
-            .attr("fill", textColourSwitchFunction)
+            .attr("fill", d => textColourSwitchFunction(d))
             .on('click', (event, d) => {
                 openWasteCategoryWindow(d, svg)
             })
@@ -214,7 +214,7 @@ function selectWasteCategoryGraphData(searchedArray){
     for(let i = 0; i < searchedArray.length; i++){
         var { name, totalAmount } = searchedArray[i];
 
-        let value = totalAmount; 
+        let value = totalAmount;
         let x0 = count;
         let x1 = count + value;
         count += value;
@@ -226,7 +226,7 @@ function selectWasteCategoryGraphData(searchedArray){
         return d3.ascending(a.value, b.value)
     });
     return rootNode
-}     
+}
 
 function updateWasteCategoryWindow(data, svg){
 
@@ -245,7 +245,7 @@ function updateWasteCategoryWindow(data, svg){
             .attr('fill', "white")
     } else {
         wasteCategoryWindow = d3.select("#wasteCategoryWindow");
-    }   
+    }
 
     wasteCategoryWindow
         .append("text")
@@ -274,15 +274,15 @@ function updateWasteCategoryWindow(data, svg){
             .attr("font-size", "15px")
             .attr("fill", "black")
 
-    wasteCategoryWindow
-        .append("text")
-            .text("Waste Destinations:")
-            .attr("class", "barChartTitle")
-            .attr("x", 60)
-            .attr("y", 350)
-            .attr("font-size", "15px")
-            .attr("fill", "black")
-    
+        wasteCategoryWindow
+            .append("text")
+                .text("Waste Destinations:")
+                .attr("class", "barChartTitle")
+                .attr("x", 60)
+                .attr("y", 350)
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+
     if(data){
         let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
 
@@ -300,13 +300,14 @@ function updateWasteCategoryWindow(data, svg){
                     .attr('class', "rect2")
                     .attr("x", d => {
                         return x(d.x0)
-                    }) 
+                    })
                     .attr("y", 175)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", 120)
-                    .style("fill", "blue")
+                    .style("fill", currentRectColor)
+                    .style("filter", catBarChartSwitchFunction)
                 }
             )
 
@@ -342,13 +343,14 @@ function updateWasteCategoryWindow(data, svg){
                     .attr('class', "rect3")
                     .attr("x", d => {
                         return x(d.x0)
-                    }) 
+                    })
                     .attr("y", 375)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", 120)
-                    .style("fill", "blue")
+                    .style("fill", currentRectColor)
+                    .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
                 }
             )
     }
@@ -374,7 +376,7 @@ function centreTextFunction(p0, p1, text, yDiff) {
         return p0 + centrePoint - centreOfText;
     }
 }
-  
+
   //***Get Percentage Function ******************************************************
 function getPercentageFunction(d) {
     let yearData = selectDataByYear(selectedYear, importedData); //gets current year data in visualisation
@@ -384,7 +386,7 @@ function getPercentageFunction(d) {
 
     return `${Math.floor(amount / amountTotal * 100)}%`;
 }
-  
+
   //***Text Manager Function ******************************************************
   //if rectangles are too small to display text, return nothing
 function nameManagerFunction(d) {
@@ -395,7 +397,7 @@ function nameManagerFunction(d) {
         return d.data.name;
     }
 }
-  
+
 function amountManagerFunction(d) {
     if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
       return null;
@@ -474,6 +476,56 @@ function textColourSwitchFunction(d) {
             return "#F5F5F5";
             break;
     }
+}
+function catBarChartSwitchFunction(d, i) {
+  switch (i) {
+    case 0:
+      return "brightness(180%)";
+      break;
+    case 1:
+      return "brightness(170%)";
+      break;
+    case 2:
+      return "brightness(160%)";
+      break;
+    case 3:
+      return "brightness(150%)";
+      break;
+    case 4:
+      return "brightness(140%)";
+      break;
+    case 5:
+      return "brightness(130%)";
+      break;
+    case 6:
+      return "brightness(120%)";
+      break;
+    case 7:
+      return "brightness(110%)";
+      break;
+    case 8:
+      return "brightness(100%)";
+      break;
+    case 9:
+      return "brightness(90%)";
+      break;
+    case 10:
+      return "brightness(80%)";
+      break;
+    case 11:
+      return "brightness(70%)";
+      break;
+    case 12:
+      return "brightness(60%)";
+      break;
+    case 13:
+      return "brightness(50%)";
+      break;
+    case 14:
+      return "brightness(40%)";
+      break;
+
+  }
 }
 //***Interactive DOM Element Functions ******************************************************
 
@@ -599,7 +651,7 @@ function closeWasteCategoryWindow(){
 
     if(document.getElementById("backButton")){
         document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"))
-    } 
+    }
 
     selectedWasteCategory = null;
 }
