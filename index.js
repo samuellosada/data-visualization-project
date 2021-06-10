@@ -274,14 +274,14 @@ function updateWasteCategoryWindow(data, svg){
             .attr("font-size", "15px")
             .attr("fill", "black")
 
-        wasteCategoryWindow
-            .append("text")
-                .text("Waste Destinations:")
-                .attr("class", "barChartTitle")
-                .attr("x", 60)
-                .attr("y", 350)
-                .attr("font-size", "15px")
-                .attr("fill", "black")
+    wasteCategoryWindow
+        .append("text")
+            .text("Waste Destinations:")
+            .attr("class", "barChartTitle")
+            .attr("x", 60)
+            .attr("y", 350)
+            .attr("font-size", "15px")
+            .attr("fill", "black")
     
     if(data){
         let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
@@ -309,6 +309,26 @@ function updateWasteCategoryWindow(data, svg){
                     .style("fill", "blue")
                 }
             )
+
+        wasteCategoryWindow
+            .selectAll('.IndustrySourceTag')
+            .data(industrySourceRootNode, d => d.name)
+            .join(
+                function(enter){
+                    return enter
+                    .append("text")
+                    .attr("class", '.IndustrySourceTag')
+                    .text(d => {
+                        if ((x(d.x1) - x(d.x0)) > 80){
+                            return d.name
+                        } else {
+                            return null
+                        }
+                    })
+                    .attr('x', d => x(d.x0))
+                    .attr("y", 200)
+                }
+            )
         
         let wasteDestinationRootNode = selectWasteCategoryGraphData(data.data.wasteDestinations);
 
@@ -325,7 +345,7 @@ function updateWasteCategoryWindow(data, svg){
                     }) 
                     .attr("y", 375)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", 120)
                     .style("fill", "blue")
