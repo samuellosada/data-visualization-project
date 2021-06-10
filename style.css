@@ -6,25 +6,39 @@ body {
   margin:0;
 }
 
+.titleContainer {
+    margin: 0 10%;
+}
+
+h1, h2 {
+    font-size: large;
+    margin: 0;
+}
+
+h1 {
+    float: left;
+}
+
+h2 {
+    float: right;
+}
+
+#container {
+    background-color: #fafafa;
+    width: 700px;
+    height: 700px;
+    padding: 50px;
+    margin: 2.5% auto;
+  }
+
 button {
   border-radius: 25px;
   border: none;
-  box-shadow: 0 2px #999;
   padding: 0.75em;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
 
 button:active{
-  box-shadow: 0 1px #666;
   transform: translate(1px);
-}
-
-#container {
-  background-color: #fafafa;
-  width: 1000px;
-  height: 900px;
-  padding: 2rem;
-  margin: auto;
-
 }
