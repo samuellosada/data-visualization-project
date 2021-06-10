@@ -19,7 +19,7 @@ const rectWidth = 200;
 const rectHeight = 50;
 
 
-const SvgSize = {width: 700, height: 700};
+const SvgSize = {width: 600, height: 600};
 
 let selectedWasteCategory;
 
@@ -279,7 +279,7 @@ function updateWasteCategoryWindow(data, svg){
                 .text("Waste Destinations:")
                 .attr("class", "barChartTitle")
                 .attr("x", 60)
-                .attr("y", 400)
+                .attr("y", 350)
                 .attr("font-size", "15px")
                 .attr("fill", "black")
     
@@ -301,7 +301,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", d => {
                         return x(d.x0)
                     }) 
-                    .attr("y", 200)
+                    .attr("y", 175)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
                     })
@@ -323,7 +323,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", d => {
                         return x(d.x0)
                     }) 
-                    .attr("y", 450)
+                    .attr("y", 375)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
                     })
