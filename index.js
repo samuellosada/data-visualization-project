@@ -394,25 +394,6 @@ function updateWasteCategoryWindow(data, svg){
               }
           )
 
-        wasteCategoryWindow
-            .selectAll('.IndustrySourceTag')
-            .data(industrySourceRootNode, d => d.name)
-            .join(
-                function(enter){
-                    return enter
-                    .append("text")
-                    .attr("class", '.IndustrySourceTag')
-                    .text(d => {
-                        if ((x(d.x1) - x(d.x0)) > 80){
-                            return d.name
-                        } else {
-                            return null
-                        }
-                    })
-                    .attr('x', d => x(d.x0))
-                    .attr("y", 200)
-                }
-            )
 
         let wasteDestinationRootNode = selectSingleStackedBarChartData(data.data.wasteDestinations);
 
@@ -448,25 +429,6 @@ function updateWasteCategoryWindow(data, svg){
                 }
             )
 
-        wasteCategoryWindow
-            .selectAll('.IndustryDestinationTag')
-            .data(industrySourceRootNode, d => d.name)
-            .join(
-                function(enter){
-                    return enter
-                    .append("text")
-                    .attr("class", '.IndustrySourceTag')
-                    .text(d => {
-                        if ((x(d.x1) - x(d.x0)) > 80){
-                            return d.name
-                        } else {
-                            return null
-                        }
-                    })
-                    .attr('x', d => x(d.x0))
-                    .attr("y", 400)
-                }
-            )
         wasteCategoryWindow
             .selectAll(".text2")
             .data(wasteDestinationRootNode, d => d.value)
