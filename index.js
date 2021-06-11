@@ -6,6 +6,8 @@ let currentWindow = windowEnum.defaultView;
 let currentRect;
 // to get and save highlighted rectangle fill value
 let currentRectColor;
+let currentCatRect;
+let currectCatRectColor;
 // makes data accessable for percantage function as variables
 let importedData;
 let selectedYear = 2016;
@@ -15,8 +17,10 @@ let coordinates = d3.pointer(this);
 let x = coordinates[0];
 let y = coordinates[1];
 
-const rectWidth = 200;
+const rectWidth = 175;
 const rectHeight = 50;
+const catRectWidth = 105;
+const catRectHeight = 120;
 
 
 const SvgSize = {width: 600, height: 600};
@@ -25,7 +29,15 @@ let selectedWasteCategory, selectedSourceOrDestination;
 
 //enum for the switch colour scheme in default view
 const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
-                                    paper:"Paper & Cardboard", plastics:"Plastics", glass:"Glass", textiles:"Textiles, Leather & Rubber", other:"Other"})
+                                    paper:"Paper & Cardboard", plastics:"Plastics", glass:"Glass", textiles:"Textiles, Leather & Rubber", other:"Other"});
+
+//enums for the switch colour scheme in category view
+const sourcesNames = Object.freeze({waste:"Waste collection, treatment & disposal services", agriculture:"Agriculture", mining:"Mining", manufacturing:"Manufacturing", elecGasWat:"Electricity, Gas & Water Services", construction:"Construction",
+                                    publicAdmin:"Public Administration & Safety", otherIndustries:"All other Industries", households:"Households", imports:"Imports"});
+const destinationNames = Object.freeze({energyrecovery:"Energy Recovery (not landfill)", landfillEnergy:"Landfill (for energy recovery)", landfillDisposal:"Landfill (disposal)", recycling:"Recycling",
+                                        treatment:"Treatment", otherDisposal:"Other Disposal", agriculture:"Agriculture", mining:"Mining", manufacturing:"Manufacturing",
+                                        elecGasWat:"Electricity, Gas & Water Services", construction:"Construction", publicAdmin:"Public Administration & Safety", otherIndustries:"All other Industries",
+                                      households:"Households", change:"Change in Inventories", exports:"Exports"});
 
 //***Graph Related Functions***************************************************************************************************
 
@@ -84,6 +96,18 @@ function updateDefaultWindow(rootNode, svg){
         defaultWindow = d3.select("#defaultWindow");
     }
     defaultWindow
+      .selectAll("g")
+      .data(rootNode.leaves())
+        .enter()
+          .append("rect")
+          .attr('class', 'coverup')
+          .attr('x', (d) => {return d.x0})
+          .attr('y', (d) => {return d.y0})
+          .attr('width', SvgSize.width)
+          .attr('height', SvgSize.height)
+          .style("fill", "#fafafa");
+
+    defaultWindow
         .selectAll(".rect")
         .data(rootNode.leaves(), (d)=> {
             return d.data.totalAmount;
@@ -114,6 +138,7 @@ function updateDefaultWindow(rootNode, svg){
             }
         )
 
+
     defaultWindow
         .selectAll("g")
         .data(rootNode.leaves())
@@ -126,13 +151,10 @@ function updateDefaultWindow(rootNode, svg){
               return centreTextFunction(d.y0, d.y1, `${d.data.name}`, -20);
             })
             .text((d) => {
-              return nameManagerFunction(d)
+              return defaultManagerFunction(d, "name")
             }) //data is used to access the leaf node properties.
             .attr("font-size", "15px")
             .attr("fill", d => textColourSwitchFunction(d))
-            .on('click', (event, d) => {
-                openWasteCategoryWindow(d, svg)
-            })
             .style("pointer-events", "none");
 
     defaultWindow
@@ -147,13 +169,10 @@ function updateDefaultWindow(rootNode, svg){
               return centreTextFunction(d.y0, d.y1, `${d.data.totalAmount} tonnes`, 0);
             })
             .text((d) => {
-              return amountManagerFunction(d)
+              return defaultManagerFunction(d, "amount")
             })
             .attr("font-size", "15px")
             .attr("fill", d => textColourSwitchFunction(d))
-            .on('click', (event, d) => {
-                openWasteCategoryWindow(d, svg)
-            })
             .style("pointer-events", "none");
 
     defaultWindow
@@ -168,13 +187,10 @@ function updateDefaultWindow(rootNode, svg){
               return centreTextFunction(d.y0, d.y1, `10%`, 20);
             })
             .text((d) => {
-              return getPercentageFunction(d);
+              return getPercentageFunction(d, "defaultWindow");
             })
             .attr("font-size", "15px")
             .attr("fill", d => textColourSwitchFunction(d))
-            .on('click', (event, d) => {
-                openWasteCategoryWindow(d, svg)
-            })
             .style("pointer-events", "none");
 
     // more info tool tip window
@@ -220,12 +236,10 @@ function selectSingleStackedBarChartData(searchedArray){
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
-    //NEED TO FIX THE SORTING FUNCTION IT IS NOT ACTUALLY CHANGING THE ROOTNODE ****************************
-    rootNode.sort((a, b) => {
+//fixed
+    return rootNode.sort((a, b) => {
         return d3.ascending(a.value, b.value)
     });
-
-    return rootNode
 }
 
 function updateWasteCategoryWindow(data, svg){
@@ -236,16 +250,17 @@ function updateWasteCategoryWindow(data, svg){
         .attr('id', "wasteCategoryWindow")
         .attr("visibility", "hidden");
 
-        wasteCategoryWindow
-        .append("rect")
-            .attr('x', 30)
-            .attr('y', 30)
-            .attr('width', SvgSize.width - 60)
-            .attr('height', SvgSize.height - 60)
-            .attr('fill', "white")
     } else {
         wasteCategoryWindow = d3.select("#wasteCategoryWindow");
     }
+
+    wasteCategoryWindow
+    .append("rect")
+        .attr('x', 30)
+        .attr('y', 30)
+        .attr('width', SvgSize.width - 60)
+        .attr('height', SvgSize.height - 60)
+        .attr('fill', "white")
 
     wasteCategoryWindow
         .append("text")
@@ -297,7 +312,7 @@ function updateWasteCategoryWindow(data, svg){
                 function(enter){
                     return enter
                     .append('rect')
-                    .attr('class', "rect2")
+                    .attr('class', "wasteSourceBar")
                     .attr("x", d => {
                         return x(d.x0)
                     })
@@ -305,36 +320,86 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0);
                     })
-                    .attr("height", 120)
+                    .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
-                    .style("filter", catBarChartSwitchFunction)
+
+                    .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
+                    .on("mouseover", mouseOverFunction)
+                    .on("mouseout", mouseOutFunction)
+                    .on("mousemove", mouseMoveFunction)
                     .on('click', (event, d) => {
                         openWasteTypeWindow(d, svg)
-                    })
-                }
-            )
+                    });
 
-        wasteCategoryWindow
-            .selectAll('.IndustrySourceTag')
-            .data(industrySourceRootNode, d => d.name)
-            .join(
-                function(enter){
-                    return enter
-                    .append("text")
-                    .attr("class", '.IndustrySourceTag')
-                    .text(d => {
-                        if ((x(d.x1) - x(d.x0)) > 80){
-                            return d.name
-                        } else {
-                            return null
-                        }
-                    })
-                    .attr('x', d => x(d.x0))
-                    .attr("y", 200)
                 }
             )
-        
+          wasteCategoryWindow
+              .selectAll(".text2")
+              .data(industrySourceRootNode, d => d.value)
+              .join(
+                  function(enter){
+                      return enter
+                      .append('text')
+                      .attr('class', "wasteSourceName")
+                      .attr("x", (d) => {
+                        return catCentreTextFunction(x(d.x0), x(d.x1), `${d.name}`);
+                    })
+                      .attr("y", 220)
+                      .text((d) => {
+                        return categoryManagerFunction(d, 'name');
+                      }) //data is used to access the leaf node properties.
+                      .attr("font-size", "11px")
+                      .attr("fill", "black")
+                      .style("pointer-events", "none");
+                  }
+              )
+          wasteCategoryWindow
+          .selectAll(".text2")
+          .data(industrySourceRootNode, d => d.value)
+          .join(
+              function(enter){
+                  return enter
+                  .append('text')
+                  .attr('class', "wasteSourceAmount")
+                  .attr("x", (d) => {
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
+                })
+                  .attr("y", 240)
+                  .text((d) => {
+                    return categoryManagerFunction(d, 'amount');
+                  }) //data is used to access the leaf node properties.
+                  .attr("font-size", "11px")
+                  .attr("fill", "black")
+                  .style("pointer-events", "none");
+              }
+          )
+          wasteCategoryWindow
+          .selectAll(".text2")
+          .data(industrySourceRootNode, d => d.value)
+          .join(
+              function(enter){
+                  return enter
+                  .append('text')
+                  .attr('class', "wasteSourcePercentage")
+                  .attr("x", (d) => {
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
+                })
+                  .attr("y", 260)
+                  .text((d) => {
+                    return categoryManagerFunction(d, 'percentage');
+                  }) //data is used to access the leaf node properties.
+                  .attr("font-size", "11px")
+                  .attr("fill", "black")
+                  .style("pointer-events", "none");
+              }
+          )
+
+
         let wasteDestinationRootNode = selectSingleStackedBarChartData(data.data.wasteDestinations);
+
+        x = d3.scaleLinear()
+            .domain([d3.min(wasteDestinationRootNode, d => d.x0), d3.max(wasteDestinationRootNode, d => d.x1)])
+            .range([60, SvgSize.width - 60])
 
         wasteCategoryWindow
             .selectAll(".rect3")
@@ -343,7 +408,7 @@ function updateWasteCategoryWindow(data, svg){
                 function(enter){
                     return enter
                     .append('rect')
-                    .attr('class', "rect3")
+                    .attr('class', "wasteDestinationsBar")
                     .attr("x", d => {
                         return x(d.x0)
                     })
@@ -351,34 +416,112 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                     })
-                    .attr("height", 120)
+                    .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
                     .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
+                    .on("mouseover", mouseOverFunction)
+                    .on("mouseout", mouseOutFunction)
+                    .on("mousemove", mouseMoveFunction)
                     .on('click', (event, d) => {
                         openWasteTypeWindow(d, svg)
-                    })
+                    });
                 }
             )
 
         wasteCategoryWindow
-            .selectAll('.IndustryDestinationTag')
-            .data(industrySourceRootNode, d => d.name)
+            .selectAll(".text2")
+            .data(wasteDestinationRootNode, d => d.value)
             .join(
                 function(enter){
                     return enter
-                    .append("text")
-                    .attr("class", '.IndustrySourceTag')
-                    .text(d => {
-                        if ((x(d.x1) - x(d.x0)) > 80){
-                            return d.name
-                        } else {
-                            return null
-                        }
-                    })
-                    .attr('x', d => x(d.x0))
-                    .attr("y", 400)
+                    .append('text')
+                    .attr('class', "wasteDestinationsName")
+                    .attr("x", (d) => {
+                      return catCentreTextFunction(x(d.x0), x(d.x1), `${d.name}`);
+                  })
+                    .attr("y", 420)
+                    .text((d) => {
+                      return categoryManagerFunction(d, 'name');
+                    }) //data is used to access the leaf node properties.
+                    .attr("font-size", "11px")
+                    .attr("fill", "black")
+                    .style("pointer-events", "none");
                 }
             )
+        wasteCategoryWindow
+        .selectAll(".text2")
+        .data(wasteDestinationRootNode, d => d.value)
+        .join(
+            function(enter){
+                return enter
+                .append('text')
+                .attr('class', "wasteDestinationsAmount")
+                .attr("x", (d) => {
+                  return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
+              })
+                .attr("y", 440)
+                .text((d) => {
+                  return categoryManagerFunction(d, 'amount');
+                }) //data is used to access the leaf node properties.
+                .attr("font-size", "11px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+            }
+        )
+        wasteCategoryWindow
+        .selectAll(".text2")
+        .data(wasteDestinationRootNode, d => d.value)
+        .join(
+            function(enter){
+
+                return enter
+                .append('text')
+                .attr('class', "wasteDestinationPercentage")
+                .attr("x", (d) => {
+                  return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
+              })
+                .attr("y", 460)
+                .text((d) => {
+                  return categoryManagerFunction(d, 'percentage');
+                }) //data is used to access the leaf node properties.
+                .attr("font-size", "11px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+            }
+        )
+        // more info tool tip window
+        let catMoreInfoWindow = svg.append('g')
+            .attr('id', "catMoreInfoWindow")
+            .attr("visibility", "hidden");
+
+        catMoreInfoWindow
+            .append("rect")
+                .attr('id', "catMoreInfoWindowRect")
+                .attr('width', 200)
+                .attr('height', 100)
+                .attr('fill', "pink")
+                .attr("rx", "25");
+
+        catMoreInfoWindow
+            .append("text")
+                .attr("id", "catMoreInfoTitle")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+
+        catMoreInfoWindow
+            .append("text")
+                .attr("id", "catMoreInfoAmount")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+
+        catMoreInfoWindow
+            .append("text")
+                .attr("id", "catMoreInfoPercentage")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
     }
 }
 
@@ -489,34 +632,78 @@ function centreTextFunction(p0, p1, text, yDiff) {
     }
 }
 
-  //***Get Percentage Function ******************************************************
-function getPercentageFunction(d) {
-    let yearData = selectDataByYear(selectedYear, importedData); //gets current year data in visualisation
+function catCentreTextFunction(p0, p1, text, yDiff) {
+    const letterWidth = 5.5;
+    const centrePoint = (p1 - p0) / 2;
+    const centreOfText = text.length * letterWidth / 2;
+    if (yDiff !== undefined) {
+        return p0 + centrePoint + yDiff;
+    } else {
+        return p0 + centrePoint - centreOfText;
+    }
+}
 
-    const amount = d.data.totalAmount; //amount of data per category
-    const amountTotal = yearData.yearTotal; //total year data
+  //***Get Percentage Function ******************************************************
+function getPercentageFunction(d, type) {
+  if (type === "defaultWindow") {
+      let yearData = selectDataByYear(selectedYear, importedData); //gets current year data in visualisation
+
+      const amount = d.data.totalAmount; //amount of data per category
+      const amountTotal = yearData.yearTotal; //total year data
+
+      return `${Math.floor(amount / amountTotal * 100)}%`;
+    }
+  if (type === "categoryWindow") {
+    const amount = d.value;
+    const amountTotal = selectedWasteCategoryAmount;
 
     return `${Math.floor(amount / amountTotal * 100)}%`;
+  }
 }
 
   //***Text Manager Function ******************************************************
   //if rectangles are too small to display text, return nothing
-function nameManagerFunction(d) {
+function defaultManagerFunction(d, type) {
     if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
         return null;
     }
-    else {
+    if (type === "name") {
         return d.data.name;
-    }
-}
-
-function amountManagerFunction(d) {
-    if ((d.x1 - d.x0) < rectWidth || (d.y1 - d.y0) < rectHeight) {
-      return null;
     }
     else
     {
       return d.data.totalAmount.toLocaleString('en-US') + " tonnes";
+    }
+}
+
+function categoryManagerFunction(d, type) {
+
+    if (type === 'name') {
+      if ((x(d.x1) - x(d.x0)) < catRectWidth) {
+          return null;
+      }
+      else
+      {
+        return d.name;
+      }
+    }
+    if (type === 'amount'){
+      if ((x(d.x1) - x(d.x0)) < catRectWidth) {
+          return null;
+      }
+      else
+      {
+        return  d.value.toLocaleString('en-US') + " tonnes";
+      }
+    }
+    if (type === 'percentage'){
+      if ((x(d.x1) - x(d.x0)) < 30) {
+          return null;
+      }
+      else
+      {
+        return  getPercentageFunction(d, "categoryWindow");
+      }
     }
 }
 
@@ -590,51 +777,64 @@ function textColourSwitchFunction(d) {
     }
 }
 function catBarChartSwitchFunction(d, i) {
-  switch (i) {
-    case 0:
+  switch (d.name) {
+    case destinationNames.energyrecovery:
+      return "brightness(270%)";
+      break;
+    case destinationNames.landfillEnergy:
+      return "brightness(260%)";
+      break;
+    case destinationNames.landfillDisposal:
+      return "brightness(250%)";
+      break;
+    case destinationNames.recycling:
+      return "brightness(240%)";
+      break;
+    case destinationNames.treatment:
+      return "brightness(230%)";
+      break;
+    case destinationNames.otherDisposal:
+    case sourcesNames.waste:
+      return "brightness(220%)";
+      break;
+    case destinationNames.agriculture:
+    case sourcesNames.agriculture:
+      return "brightness(210%)";
+      break;
+    case destinationNames.mining:
+    case sourcesNames.mining:
+      return "brightness(200%)";
+      break;
+    case destinationNames.manufacturing:
+    case sourcesNames.manufacturing:
+      return "brightness(190%)";
+      break;
+    case destinationNames.elecGasWat:
+    case sourcesNames.elecGasWat:
       return "brightness(180%)";
       break;
-    case 1:
+    case destinationNames.construction:
+    case sourcesNames.construction:
       return "brightness(170%)";
       break;
-    case 2:
+    case destinationNames.publicAdmin:
+    case sourcesNames.publicAdmin:
       return "brightness(160%)";
       break;
-    case 3:
+    case destinationNames.otherIndustries:
+    case sourcesNames.otherIndustries:
       return "brightness(150%)";
       break;
-    case 4:
+    case destinationNames.households:
+    case sourcesNames.households:
       return "brightness(140%)";
       break;
-    case 5:
-      return "brightness(130%)";
+    case destinationNames.change:
+      return "brightness(135%)";
       break;
-    case 6:
-      return "brightness(120%)";
-      break;
-    case 7:
-      return "brightness(110%)";
-      break;
-    case 8:
-      return "brightness(100%)";
-      break;
-    case 9:
-      return "brightness(90%)";
-      break;
-    case 10:
-      return "brightness(80%)";
-      break;
-    case 11:
-      return "brightness(70%)";
-      break;
-    case 12:
-      return "brightness(60%)";
-      break;
-    case 13:
-      return "brightness(50%)";
-      break;
-    case 14:
-      return "brightness(40%)";
+    case destinationNames.exports:
+    case sourcesNames.imports:
+      return "brightness(140%)";
       break;
 
   }
@@ -652,6 +852,15 @@ function mouseOverFunction(event, d) {
         //changes the selected rectangle to highlighted color
         .style("fill", d3.color(currentRectColor).darker(1).formatHex())
    }
+   if (currentWindow === windowEnum.categoryView) {
+       if (this.getBoundingClientRect().height === catRectHeight) {
+       currentCatRect = this;
+       currentCatRectColor = this.style.fill;
+
+       d3.select(this)
+       .style("fill", d3.color(currentCatRectColor).darker(2).formatHex())
+      }
+   }
 }
 
 function mouseOutFunction(d) {
@@ -665,12 +874,24 @@ function mouseOutFunction(d) {
      // hides the more info window when mouse leaves the rect
      hideMoreInfo(d);
    };
+
+   if (currentWindow === windowEnum.categoryView) {
+    if (this.getBoundingClientRect().height === catRectHeight) {
+       d3.select(this)
+       //returns colour value post-highlight
+       .style("fill", function() {
+           return currentCatRectColor;
+         });
+         // hides the more info window when mouse leaves the rect
+         hideMoreInfo(d);
+       };
+    }
 }
 
 //live mouse location for more info tooltip
 function mouseMoveFunction(event, d) {
   var coords = d3.pointer(event);
-
+console.log(coords[0], coords[1]);
   //Displays pop up window if the rectangle is too small
   //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
   if (currentWindow === windowEnum.defaultView) {
@@ -700,6 +921,64 @@ function mouseMoveFunction(event, d) {
           .attr('visibility', "visible")
      }
    }
+   if (currentWindow === windowEnum.categoryView) {
+     if (this.getBoundingClientRect().height === catRectHeight) {
+
+       d3.select("#catMoreInfoWindow")
+         .attr('x', (d) =>{
+           return moreInfoSwapSides(event, d);
+         })
+         .attr('y', coords[1]-100);
+
+       d3.select("#catMoreInfoWindowRect")
+           .attr('x', (d) =>{
+            return moreInfoSwapSides(event, d);
+           })
+         .attr('y', coords[1]-100)
+         .attr('visibility', "visible");
+
+       d3.select("#catMoreInfoTitle")
+           .attr('x', (d) =>{
+            return moreInfoSwapSides(event, d) + 20;
+           })
+           .attr("y", coords[1]-100 + 35)
+           .text(d.name)
+           .attr('visibility', "visible");
+
+       d3.select("#catMoreInfoWindow")
+          .attr('visibility', "visible");
+       d3.select("#catMoreInfoAmount")
+           .attr('x', (d) =>{
+            return moreInfoSwapSides(event, d) + 20;
+           })
+           .attr("y", coords[1]-100 + 55)
+           .text(d.value.toLocaleString('en-US') + " tonnes")
+           .attr('visibility', "visible");
+
+       d3.select("#catMoreInfoWindow")
+          .attr('visibility', "visible");
+       d3.select("#catMoreInfoPercentage")
+           .attr('x', (d) =>{
+             return moreInfoSwapSides(event, d) + 20;
+           })
+           .attr("y", coords[1]-100 + 75)
+           .text(getPercentageFunction(d, "categoryWindow"))
+           .attr('visibility', "visible")
+
+
+         }
+    }
+}
+
+function moreInfoSwapSides(events, d) {
+var coords = d3.pointer(event);
+  if (coords[0] < 260){
+    return coords[0]
+  }
+  else
+  {
+    return coords[0]-200
+  }
 }
 
 function hideMoreInfo(d) {
@@ -708,6 +987,13 @@ function hideMoreInfo(d) {
   d3.select("#moreInfoWindowRect").attr('visibility', "hidden");
   d3.select("#moreInfoTitle").attr('visibility', "hidden");
   d3.select("#moreInfoAmount").attr('visibility', "hidden");
+
+  d3.select("#catMoreInfoWindow").attr('visibility', "hidden");
+  d3.select("#catMoreInfoWindowRect").attr('visibility', "hidden");
+  d3.select("#catMoreInfoTitle").attr('visibility', "hidden");
+  d3.select("#catMoreInfoAmount").attr('visibility', "hidden");
+  d3.select("#catMoreInfoPercentage").attr('visibility', "hidden");
+
 }
 
 //***Window Handling *************************************************************************
@@ -721,6 +1007,7 @@ function openWasteCategoryWindow(d, svg){
     currentWindow = windowEnum.categoryView;
 
     selectedWasteCategory = d.data.name;
+    selectedWasteCategoryAmount = d.data.totalAmount;
 
     updateWasteCategoryWindow(d, svg);
 
@@ -781,6 +1068,8 @@ function openWasteTypeWindow(d, svg){
 
     selectedSourceOrDestination = d.name;
 
+    hideMoreInfo(d);
+
     updateWasteTypeWindow(d, svg);
 
     //change visiibility of elements
@@ -808,6 +1097,11 @@ function openWasteTypeWindow(d, svg){
 }
 
 function closeWasteTypeWindow(){
+  d3.select(currentCatRect)
+  //returns colour value post-highlight
+  .style("fill", function() {
+      return currentCatRectColor;
+  });
 
     d3.select("#wasteTypeWindow").attr('visibility', "hidden");
     d3.select("#wasteTypeTitle").attr('visibility', "hidden");
