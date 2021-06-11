@@ -207,7 +207,7 @@ function updateDefaultWindow(rootNode, svg){
             .style("pointer-events", "none");
 }
 
-function selectWasteCategoryGraphData(searchedArray){
+function selectSingleStackedBarChartData(searchedArray){
     var rootNode = [];
 
     let count = 0;
@@ -225,6 +225,8 @@ function selectWasteCategoryGraphData(searchedArray){
     rootNode.sort((a, b) => {
         return d3.ascending(a.value, b.value)
     });
+
+    console.log(searchedArray, rootNode);
     return rootNode
 }
 
@@ -284,7 +286,7 @@ function updateWasteCategoryWindow(data, svg){
             .attr("fill", "black")
 
     if(data){
-        let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
+        let industrySourceRootNode = selectSingleStackedBarChartData(data.data.wasteIndustrySources);
 
         x = d3.scaleLinear()
             .domain([d3.min(industrySourceRootNode, d => d.x0), d3.max(industrySourceRootNode, d => d.x1)])
@@ -334,7 +336,7 @@ function updateWasteCategoryWindow(data, svg){
                 }
             )
         
-        let wasteDestinationRootNode = selectWasteCategoryGraphData(data.data.wasteDestinations);
+        let wasteDestinationRootNode = selectSingleStackedBarChartData(data.data.wasteDestinations);
 
         wasteCategoryWindow
             .selectAll(".rect3")
@@ -354,6 +356,29 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("height", 120)
                     .style("fill", currentRectColor)
                     .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
+                    .on('click', (event, d) => {
+                        openWasteTypeWindow(d, svg)
+                    })
+                }
+            )
+
+        wasteCategoryWindow
+            .selectAll('.IndustryDestinationTag')
+            .data(industrySourceRootNode, d => d.name)
+            .join(
+                function(enter){
+                    return enter
+                    .append("text")
+                    .attr("class", '.IndustrySourceTag')
+                    .text(d => {
+                        if ((x(d.x1) - x(d.x0)) > 80){
+                            return d.name
+                        } else {
+                            return null
+                        }
+                    })
+                    .attr('x', d => x(d.x0))
+                    .attr("y", 400)
                 }
             )
     }
@@ -714,7 +739,6 @@ function openWasteTypeWindow(d, svg){
 
     selectedSourceOrDestination = d.name;
 
-    //rootNode = selectWasteCategoryIndustrySourceData(d.data.wasteIndustrySources);
     updateWasteTypeWindow(d, svg);
 
     //change visiibility of elements
