@@ -211,21 +211,20 @@ function selectSingleStackedBarChartData(searchedArray){
 
     let count = 0;
     for(let i = 0; i < searchedArray.length; i++){
-        var { name, totalAmount } = searchedArray[i];
+        var { name, totalAmount, wasteTypes} = searchedArray[i];
 
         let value = totalAmount;
         let x0 = count;
         let x1 = count + value;
         count += value;
 
-        rootNode.push({name, value, x0, x1});
+        rootNode.push({name, value, x0, x1, wasteTypes});
     }
     //NEED TO FIX THE SORTING FUNCTION IT IS NOT ACTUALLY CHANGING THE ROOTNODE ****************************
     rootNode.sort((a, b) => {
         return d3.ascending(a.value, b.value)
     });
 
-    console.log(searchedArray, rootNode);
     return rootNode
 }
 
@@ -304,7 +303,7 @@ function updateWasteCategoryWindow(data, svg){
                     })
                     .attr("y", 175)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0);
                     })
                     .attr("height", 120)
                     .style("fill", currentRectColor)
@@ -350,7 +349,7 @@ function updateWasteCategoryWindow(data, svg){
                     })
                     .attr("y", 375)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                     })
                     .attr("height", 120)
                     .style("fill", currentRectColor)
@@ -420,9 +419,53 @@ function updateWasteTypeWindow(data, svg){
             .attr("font-weight", "700")
             .attr("fill", "black");
 
+            console.log(data)
 
-    
+    let wasteTypeRootNode = selectSingleStackedBarChartData(data.wasteTypes);
 
+    x = d3.scaleLinear()
+        .domain([d3.min(wasteTypeRootNode, d => d.x0), d3.max(wasteTypeRootNode, d => d.x1)])
+        .range([60, SvgSize.width - 60])
+
+    wasteTypeWindow
+        .selectAll(".rect4")
+        .data(wasteTypeRootNode, d => d.value)
+        .join(
+            function(enter){
+                return enter
+                .append('rect')
+                .attr('class', "rect4")
+                .attr("x", d => {
+                    return x(d.x0)
+                })
+                .attr("y", 375)
+                .attr("width", d => {
+                    return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
+                })
+                .attr("height", 120)
+                .style("fill", "gray")
+            }
+        )
+
+    wasteTypeWindow
+        .selectAll('.wasteTypeTag')
+        .data(wasteTypeRootNode, d => d.name)
+        .join(
+            function(enter){
+                return enter
+                .append("text")
+                .attr("class", '.wasteTypeTag')
+                .text(d => {
+                    if ((x(d.x1) - x(d.x0)) > 80){
+                        return d.name
+                    } else {
+                        return null
+                    }
+                })
+                .attr('x', d => x(d.x0))
+                .attr("y", 400)
+            }
+        )
 }
 
 function update(rootNode, svg){
