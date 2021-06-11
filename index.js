@@ -419,7 +419,6 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
                     .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
-
                     .on("mouseover", mouseOverFunction)
                     .on("mouseout", mouseOutFunction)
                     .on("mousemove", mouseMoveFunction)
