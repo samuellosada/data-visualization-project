@@ -58,7 +58,6 @@ function treemapSetup(wasteCategoryData, width, height){
     //Create new Layout to make a treemap. Gives each child a given x, y and other properties we use to make treemap visualizations
     let treemapLayout = d3.treemap()
         .size([width, height])
-        .padding(2)
         .paddingOuter(14);
 
     //allows you to select d3 layouts for hierarchical data.
