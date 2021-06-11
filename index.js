@@ -21,7 +21,7 @@ const rectHeight = 50;
 
 const SvgSize = {width: 600, height: 600};
 
-let selectedWasteCategory;
+let selectedWasteCategory, selectedSourceOrDestination;
 
 //enum for the switch colour scheme in default view
 const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
@@ -274,14 +274,14 @@ function updateWasteCategoryWindow(data, svg){
             .attr("font-size", "15px")
             .attr("fill", "black")
 
-        wasteCategoryWindow
-            .append("text")
-                .text("Waste Destinations:")
-                .attr("class", "barChartTitle")
-                .attr("x", 60)
-                .attr("y", 350)
-                .attr("font-size", "15px")
-                .attr("fill", "black")
+    wasteCategoryWindow
+        .append("text")
+            .text("Waste Destinations:")
+            .attr("class", "barChartTitle")
+            .attr("x", 60)
+            .attr("y", 350)
+            .attr("font-size", "15px")
+            .attr("fill", "black")
 
     if(data){
         let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
@@ -308,6 +308,9 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("height", 120)
                     .style("fill", currentRectColor)
                     .style("filter", catBarChartSwitchFunction)
+                    .on('click', (event, d) => {
+                        openWasteTypeWindow(d, svg)
+                    })
                 }
             )
 
@@ -354,6 +357,48 @@ function updateWasteCategoryWindow(data, svg){
                 }
             )
     }
+}
+
+function updateWasteTypeWindow(data, svg){
+
+    let wasteTypeWindow;
+    if(!document.getElementById("wasteTypeWindow")){
+        wasteTypeWindow = svg.append('g')
+        .attr('id', "wasteTypeWindow")
+        .attr("visibility", "hidden");
+
+        wasteTypeWindow
+            .append("rect")
+                .attr('x', 60)
+                .attr('y', 60)
+                .attr('width', SvgSize.width - 120)
+                .attr('height', SvgSize.height - 120)
+                .attr('fill', "#fafafa")
+    } else {
+        wasteTypeWindow = d3.select("#wasteTypeWindow");
+    }
+
+    wasteTypeWindow
+        .append("text")
+            .attr("id", "wasteTypeTitle")
+            .attr("x", 120)
+            .attr("y", 120)
+            .attr("font-size", "15px")
+            .attr("font-weight", "700")
+            .attr("fill", "black");
+
+    wasteTypeWindow
+        .append("text")
+            .attr("id", "wasteTypeAmount")
+            .attr("x", SvgSize.width - 260)
+            .attr("y", 120)
+            .attr("font-size", "15px")
+            .attr("font-weight", "700")
+            .attr("fill", "black");
+
+
+    
+
 }
 
 function update(rootNode, svg){
@@ -610,7 +655,6 @@ function openWasteCategoryWindow(d, svg){
 
     selectedWasteCategory = d.data.name;
 
-    //rootNode = selectWasteCategoryIndustrySourceData(d.data.wasteIndustrySources);
     updateWasteCategoryWindow(d, svg);
 
     //change visiibility of elements
@@ -638,13 +682,13 @@ function openWasteCategoryWindow(d, svg){
 }
 
 function closeWasteCategoryWindow(){
-    //reverts current window state to default
-    currentWindow = windowEnum.defaultView;
+
     d3.select(currentRect)
     //returns colour value post-highlight
     .style("fill", function() {
         return currentRectColor;
     });
+
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
     d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
@@ -653,7 +697,63 @@ function closeWasteCategoryWindow(){
         document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"))
     }
 
+
+    if(document.getElementById("backButton2")){
+        closeWasteTypeWindow();
+    }
+    //reverts current window state to default
+    currentWindow = windowEnum.defaultView;
+
     selectedWasteCategory = null;
+}
+
+function openWasteTypeWindow(d, svg){
+  if (currentWindow === windowEnum.categoryView) {
+    //prevents any functions on default window from being executed while in category view
+    currentWindow = windowEnum.typesView;
+
+    selectedSourceOrDestination = d.name;
+
+    //rootNode = selectWasteCategoryIndustrySourceData(d.data.wasteIndustrySources);
+    updateWasteTypeWindow(d, svg);
+
+    //change visiibility of elements
+    d3.select("#wasteTypeWindow").attr('visibility', "visible");
+    d3.select("#wasteTypeTitle")
+        .text(d.name)
+        .attr('visibility', "visible");
+
+    d3.select("#wasteTypeWindow").attr('visibility', "visible");
+    d3.select("#wasteTypeAmount")
+        .text(d.value.toLocaleString('en-US') + " tonnes")
+        .attr('visibility', "visible")
+    };
+
+    //new button should only be made if one does not already exist.
+    if (!document.getElementById('backButton2')){
+        let backButton = document.createElement('button');
+        backButton.innerHTML = "Second &#10006"; // unicode for x symbol
+        backButton.setAttribute('id', "backButton2");
+        backButton.onclick = () => {closeWasteTypeWindow()};
+
+        document.getElementById('visualization').appendChild(backButton);
+    }
+
+}
+
+function closeWasteTypeWindow(){
+
+    d3.select("#wasteTypeWindow").attr('visibility', "hidden");
+    d3.select("#wasteTypeTitle").attr('visibility', "hidden");
+    d3.select("#wasteTypeAmount").attr('visibility', "hidden");
+
+    if(document.getElementById("backButton2")){
+        document.getElementById("backButton2").parentNode.removeChild(document.getElementById("backButton2"))
+    }
+
+    currentWindow = windowEnum.categoryView;
+
+    selectedSourceOrDestination = null;
 }
 
 
