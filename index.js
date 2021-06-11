@@ -1024,6 +1024,8 @@ function openWasteTypeWindow(d, svg){
 
     selectedSourceOrDestination = d.name;
 
+    hideMoreInfo(d);
+
     updateWasteTypeWindow(d, svg);
 
     //change visiibility of elements
@@ -1051,6 +1053,11 @@ function openWasteTypeWindow(d, svg){
 }
 
 function closeWasteTypeWindow(){
+  d3.select(currentCatRect)
+  //returns colour value post-highlight
+  .style("fill", function() {
+      return currentCatRectColor;
+  });
 
     d3.select("#wasteTypeWindow").attr('visibility', "hidden");
     d3.select("#wasteTypeTitle").attr('visibility', "hidden");
