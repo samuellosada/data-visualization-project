@@ -25,8 +25,7 @@ const catRectHeight = 120;
 
 const SvgSize = {width: 600, height: 600};
 
-let selectedWasteCategory;
-let selectedWasteCategoryAmount;
+let selectedWasteCategory, selectedSourceOrDestination;
 
 //enum for the switch colour scheme in default view
 const categoryNames = Object.freeze({masonry:"Masonry Materials", organics:"Organics", ash:"Ash", hazardous:"Hazardous Waste", metals:"Metals",
@@ -71,7 +70,6 @@ function treemapSetup(wasteCategoryData, width, height){
     //Create new Layout to make a treemap. Gives each child a given x, y and other properties we use to make treemap visualizations
     let treemapLayout = d3.treemap()
         .size([width, height])
-        .padding(2)
         .paddingOuter(14);
 
     //allows you to select d3 layouts for hierarchical data.
@@ -224,7 +222,7 @@ function updateDefaultWindow(rootNode, svg){
             .style("pointer-events", "none");
 }
 
-function selectWasteCategoryGraphData(searchedArray){
+function selectSingleStackedBarChartData(searchedArray){
     var rootNode = [];
 
     let count = 0;
@@ -291,17 +289,17 @@ function updateWasteCategoryWindow(data, svg){
             .attr("font-size", "15px")
             .attr("fill", "black")
 
-        wasteCategoryWindow
-            .append("text")
-                .text("Waste Destinations:")
-                .attr("class", "barChartTitle")
-                .attr("x", 60)
-                .attr("y", 350)
-                .attr("font-size", "15px")
-                .attr("fill", "black")
+    wasteCategoryWindow
+        .append("text")
+            .text("Waste Destinations:")
+            .attr("class", "barChartTitle")
+            .attr("x", 60)
+            .attr("y", 350)
+            .attr("font-size", "15px")
+            .attr("fill", "black")
 
     if(data){
-        let industrySourceRootNode = selectWasteCategoryGraphData(data.data.wasteIndustrySources);
+        let industrySourceRootNode = selectSingleStackedBarChartData(data.data.wasteIndustrySources);
 
         x = d3.scaleLinear()
             .domain([d3.min(industrySourceRootNode, d => d.x0), d3.max(industrySourceRootNode, d => d.x1)])
@@ -320,14 +318,19 @@ function updateWasteCategoryWindow(data, svg){
                     })
                     .attr("y", 175)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
+
                     .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
                     .on("mouseover", mouseOverFunction)
                     .on("mouseout", mouseOutFunction)
-                    .on("mousemove", mouseMoveFunction);
+                    .on("mousemove", mouseMoveFunction)
+                    .on('click', (event, d) => {
+                        openWasteTypeWindow(d, svg)
+                    });
+
                 }
             )
           wasteCategoryWindow
@@ -391,7 +394,27 @@ function updateWasteCategoryWindow(data, svg){
               }
           )
 
-        let wasteDestinationRootNode = selectWasteCategoryGraphData(data.data.wasteDestinations);
+        wasteCategoryWindow
+            .selectAll('.IndustrySourceTag')
+            .data(industrySourceRootNode, d => d.name)
+            .join(
+                function(enter){
+                    return enter
+                    .append("text")
+                    .attr("class", '.IndustrySourceTag')
+                    .text(d => {
+                        if ((x(d.x1) - x(d.x0)) > 80){
+                            return d.name
+                        } else {
+                            return null
+                        }
+                    })
+                    .attr('x', d => x(d.x0))
+                    .attr("y", 200)
+                }
+            )
+
+        let wasteDestinationRootNode = selectSingleStackedBarChartData(data.data.wasteDestinations);
 
         x = d3.scaleLinear()
             .domain([d3.min(wasteDestinationRootNode, d => d.x0), d3.max(wasteDestinationRootNode, d => d.x1)])
@@ -410,14 +433,38 @@ function updateWasteCategoryWindow(data, svg){
                     })
                     .attr("y", 375)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 2;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                     })
                     .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
                     .style("filter", (d, i) => catBarChartSwitchFunction(d, i))
+
                     .on("mouseover", mouseOverFunction)
                     .on("mouseout", mouseOutFunction)
-                    .on("mousemove", mouseMoveFunction);
+                    .on("mousemove", mouseMoveFunction)
+                    .on('click', (event, d) => {
+                        openWasteTypeWindow(d, svg)
+                    });
+                }
+            )
+
+        wasteCategoryWindow
+            .selectAll('.IndustryDestinationTag')
+            .data(industrySourceRootNode, d => d.name)
+            .join(
+                function(enter){
+                    return enter
+                    .append("text")
+                    .attr("class", '.IndustrySourceTag')
+                    .text(d => {
+                        if ((x(d.x1) - x(d.x0)) > 80){
+                            return d.name
+                        } else {
+                            return null
+                        }
+                    })
+                    .attr('x', d => x(d.x0))
+                    .attr("y", 400)
                 }
             )
         wasteCategoryWindow
@@ -515,6 +562,48 @@ function updateWasteCategoryWindow(data, svg){
                 .attr("fill", "black")
                 .style("pointer-events", "none");
     }
+}
+
+function updateWasteTypeWindow(data, svg){
+
+    let wasteTypeWindow;
+    if(!document.getElementById("wasteTypeWindow")){
+        wasteTypeWindow = svg.append('g')
+        .attr('id', "wasteTypeWindow")
+        .attr("visibility", "hidden");
+
+        wasteTypeWindow
+            .append("rect")
+                .attr('x', 60)
+                .attr('y', 60)
+                .attr('width', SvgSize.width - 120)
+                .attr('height', SvgSize.height - 120)
+                .attr('fill', "#fafafa")
+    } else {
+        wasteTypeWindow = d3.select("#wasteTypeWindow");
+    }
+
+    wasteTypeWindow
+        .append("text")
+            .attr("id", "wasteTypeTitle")
+            .attr("x", 120)
+            .attr("y", 120)
+            .attr("font-size", "15px")
+            .attr("font-weight", "700")
+            .attr("fill", "black");
+
+    wasteTypeWindow
+        .append("text")
+            .attr("id", "wasteTypeAmount")
+            .attr("x", SvgSize.width - 260)
+            .attr("y", 120)
+            .attr("font-size", "15px")
+            .attr("font-weight", "700")
+            .attr("fill", "black");
+
+
+
+
 }
 
 function update(rootNode, svg){
@@ -915,7 +1004,6 @@ function openWasteCategoryWindow(d, svg){
     selectedWasteCategory = d.data.name;
     selectedWasteCategoryAmount = d.data.totalAmount;
 
-    //rootNode = selectWasteCategoryIndustrySourceData(d.data.wasteIndustrySources);
     updateWasteCategoryWindow(d, svg);
 
     //change visiibility of elements
@@ -943,13 +1031,13 @@ function openWasteCategoryWindow(d, svg){
 }
 
 function closeWasteCategoryWindow(){
-    //reverts current window state to default
-    currentWindow = windowEnum.defaultView;
+
     d3.select(currentRect)
     //returns colour value post-highlight
     .style("fill", function() {
         return currentRectColor;
     });
+
     d3.select("#wasteCategoryWindow").attr('visibility', "hidden");
     d3.select("#wasteCategoryTitle").attr('visibility', "hidden");
     d3.select("#wasteCategoryAmount").attr('visibility', "hidden");
@@ -958,7 +1046,62 @@ function closeWasteCategoryWindow(){
         document.getElementById("backButton").parentNode.removeChild(document.getElementById("backButton"))
     }
 
+
+    if(document.getElementById("backButton2")){
+        closeWasteTypeWindow();
+    }
+    //reverts current window state to default
+    currentWindow = windowEnum.defaultView;
+
     selectedWasteCategory = null;
+}
+
+function openWasteTypeWindow(d, svg){
+  if (currentWindow === windowEnum.categoryView) {
+    //prevents any functions on default window from being executed while in category view
+    currentWindow = windowEnum.typesView;
+
+    selectedSourceOrDestination = d.name;
+
+    updateWasteTypeWindow(d, svg);
+
+    //change visiibility of elements
+    d3.select("#wasteTypeWindow").attr('visibility', "visible");
+    d3.select("#wasteTypeTitle")
+        .text(d.name)
+        .attr('visibility', "visible");
+
+    d3.select("#wasteTypeWindow").attr('visibility', "visible");
+    d3.select("#wasteTypeAmount")
+        .text(d.value.toLocaleString('en-US') + " tonnes")
+        .attr('visibility', "visible")
+    };
+
+    //new button should only be made if one does not already exist.
+    if (!document.getElementById('backButton2')){
+        let backButton = document.createElement('button');
+        backButton.innerHTML = "Second &#10006"; // unicode for x symbol
+        backButton.setAttribute('id', "backButton2");
+        backButton.onclick = () => {closeWasteTypeWindow()};
+
+        document.getElementById('visualization').appendChild(backButton);
+    }
+
+}
+
+function closeWasteTypeWindow(){
+
+    d3.select("#wasteTypeWindow").attr('visibility', "hidden");
+    d3.select("#wasteTypeTitle").attr('visibility', "hidden");
+    d3.select("#wasteTypeAmount").attr('visibility', "hidden");
+
+    if(document.getElementById("backButton2")){
+        document.getElementById("backButton2").parentNode.removeChild(document.getElementById("backButton2"))
+    }
+
+    currentWindow = windowEnum.categoryView;
+
+    selectedSourceOrDestination = null;
 }
 
 
