@@ -710,25 +710,25 @@ function colourSwitchFunction(d) {
             return "#00778e";
             break;
         case categoryNames.hazardous:
-            return "#00958f";
+            return "#006663";
             break;
         case categoryNames.metals:
-            return "#41cb61";
+            return "#2CA047";
             break;
         case categoryNames.paper:
-            return "#00b27f";
+            return "#008F66";
             break;
         case categoryNames.plastics:
-            return "#a3e039";
+            return "#F9C80E";
             break;
         case categoryNames.glass:
-            return "#ffed00";
+            return "#F86624";
             break;
         case categoryNames.textiles:
-            return "#e6eb00";
+            return "#EA3546";
             break;
         case categoryNames.other:
-            return "#482077";
+            return "#8A6A79";
             break;
     }
 }
@@ -769,62 +769,62 @@ function textColourSwitchFunction(d) {
 function catBarChartSwitchFunction(d, i) {
   switch (d.name) {
     case destinationNames.energyrecovery:
-      return "brightness(270%)";
-      break;
-    case destinationNames.landfillEnergy:
-      return "brightness(260%)";
-      break;
-    case destinationNames.landfillDisposal:
-      return "brightness(250%)";
-      break;
-    case destinationNames.recycling:
       return "brightness(240%)";
       break;
-    case destinationNames.treatment:
+    case destinationNames.landfillEnergy:
       return "brightness(230%)";
+      break;
+    case destinationNames.landfillDisposal:
+      return "brightness(220%)";
+      break;
+    case destinationNames.recycling:
+      return "brightness(210%)";
+      break;
+    case destinationNames.treatment:
+      return "brightness(200%)";
       break;
     case destinationNames.otherDisposal:
     case sourcesNames.waste:
-      return "brightness(220%)";
+      return "brightness(190%)";
       break;
     case destinationNames.agriculture:
     case sourcesNames.agriculture:
-      return "brightness(210%)";
+      return "brightness(180%)";
       break;
     case destinationNames.mining:
     case sourcesNames.mining:
-      return "brightness(200%)";
+      return "brightness(170%)";
       break;
     case destinationNames.manufacturing:
     case sourcesNames.manufacturing:
-      return "brightness(190%)";
+      return "brightness(160%)";
       break;
     case destinationNames.elecGasWat:
     case sourcesNames.elecGasWat:
-      return "brightness(180%)";
+      return "brightness(150%)";
       break;
     case destinationNames.construction:
     case sourcesNames.construction:
-      return "brightness(170%)";
+      return "brightness(140%)";
       break;
     case destinationNames.publicAdmin:
     case sourcesNames.publicAdmin:
-      return "brightness(160%)";
+      return "brightness(130%)";
       break;
     case destinationNames.otherIndustries:
     case sourcesNames.otherIndustries:
-      return "brightness(150%)";
+      return "brightness(120%)";
       break;
     case destinationNames.households:
     case sourcesNames.households:
-      return "brightness(140%)";
+      return "brightness(110%)";
       break;
     case destinationNames.change:
-      return "brightness(135%)";
+      return "brightness(105%)";
       break;
     case destinationNames.exports:
     case sourcesNames.imports:
-      return "brightness(140%)";
+      return "brightness(100%)";
       break;
 
   }
@@ -843,6 +843,7 @@ function mouseOverFunction(event, d) {
         .style("fill", d3.color(currentRectColor).darker(1).formatHex())
    }
    if (currentWindow === windowEnum.categoryView) {
+
        if (this.getBoundingClientRect().height === catRectHeight) {
        currentCatRect = this;
        currentCatRectColor = this.style.fill;
