@@ -197,6 +197,7 @@ function updateDefaultWindow(rootNode, svg){
             .attr('width', 200)
             .attr('height', 100)
             .attr('fill', "white")
+            .attr("rx", "25")
             .style("pointer-events", "none")
 
     moreInfoWindow
@@ -1051,7 +1052,7 @@ function mouseMoveFunction(event, d) {
              return moreInfoSwapSides(event, d);
             })
           .attr('y', coords[1]-100)
-          .attr('width', moreInfoNameLength < 16 ? 200 : moreInfoNameLength * 8)
+          .attr('width', moreInfoNameLength < 16 ? 200 : moreInfoNameLength * 10)
           .attr('fill', currentTypeRectColor)
           .attr('visibility', "visible");
 
@@ -1093,7 +1094,7 @@ var coords = d3.pointer(event);
   }
   else
   {
-    return moreInfoNameLength < 16 ? coords[0]-200 : coords[0] - moreInfoNameLength * 8
+    return moreInfoNameLength < 16 ? coords[0]-200 : coords[0] - moreInfoNameLength * 10
   }
 }
 
