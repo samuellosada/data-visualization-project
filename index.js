@@ -216,6 +216,10 @@ function updateDefaultWindow(rootNode, svg){
 }
 
 function selectSingleStackedBarChartData(searchedArray){
+    searchedArray.sort(function(a, b){
+        return a.totalAmount - b.totalAmount
+    })
+
     var rootNode = [];
 
     let count = 0;
@@ -229,10 +233,8 @@ function selectSingleStackedBarChartData(searchedArray){
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
-//fixed
-    return rootNode.sort((a, b) => {
-        return d3.ascending(a.value, b.value)
-    });
+    return rootNode;
+    
 }
 
 function updateWasteCategoryWindow(data, svg){
@@ -527,7 +529,6 @@ function updateWasteCategoryWindow(data, svg){
 }
 
 function updateWasteTypeWindow(data, svg){
-console.log(data)
     let wasteTypeWindow;
     if(!document.getElementById("wasteTypeWindow")){
         wasteTypeWindow = svg.append('g')
