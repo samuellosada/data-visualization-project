@@ -193,7 +193,6 @@ function updateDefaultWindow(rootNode, svg){
             .attr('height', 100)
             .attr('fill', "white")
             .style("pointer-events", "none")
-            .attr("rx", "25");
 
     moreInfoWindow
         .append("text")
@@ -998,9 +997,6 @@ function openWasteCategoryWindow(d, svg){
 
     selectedWasteCategory = d.data.name;
     selectedWasteCategoryAmount = d.data.totalAmount;
-
-    console.log(selectedWasteCategory);
-    console.log(selectedWasteCategoryAmount);
 
     updateWasteCategoryWindow(d, svg);
 
