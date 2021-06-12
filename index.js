@@ -344,8 +344,13 @@ function updateWasteCategoryWindow(data, svg){
                         return categoryManagerFunction(d, 'name');
                       }) //data is used to access the leaf node properties.
                       .attr("font-size", "11px")
-                      .attr("fill", "#FFFFFF")
-                      .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                      .attr("fill", () => {
+                          if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                            return "#ffffff"
+                          } else {
+                            return "#000000"
+                          }
+                      })
                       .style("pointer-events", "none");
                   }
               )
@@ -365,8 +370,13 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'amount');
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
-                  .attr("fill", "#FFFFFF")
-                  .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                  .attr("fill", () => {
+                    if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                      return "#ffffff"
+                    } else {
+                      return "#000000"
+                    }
+                })
                   .style("pointer-events", "none");
               }
           )
@@ -386,8 +396,13 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'percentage');
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
-                  .attr("fill", "#FFFFFF")
-                  .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                  .attr("fill", () => {
+                    if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                      return "#ffffff"
+                    } else {
+                      return "#000000"
+                    }
+                })  
                   .attr("font-weight", "700")
                   .style("pointer-events", "none");
               }
@@ -443,8 +458,13 @@ function updateWasteCategoryWindow(data, svg){
                       return categoryManagerFunction(d, 'name');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                    .attr("fill", () => {
+                        if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                          return "#ffffff"
+                        } else {
+                          return "#000000"
+                        }
+                    })
                     .style("pointer-events", "none");
                 }
             )
@@ -465,8 +485,13 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'amount');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                    .attr("fill", () => {
+                        if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                          return "#ffffff"
+                        } else {
+                          return "#000000"
+                        }
+                    })
                     .style("pointer-events", "none");
                 }
             )
@@ -487,8 +512,13 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'percentage');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                    .attr("fill", () => {
+                        if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                          return "#ffffff"
+                        } else {
+                          return "#000000"
+                        }
+                    })
                     .attr("font-weight", "700")
                     .style("pointer-events", "none");
                 }
