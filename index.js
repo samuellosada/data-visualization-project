@@ -8,7 +8,11 @@ let currentRect;
 let currentRectColor;
 let currentCatRect;
 let currectCatRectColor;
+let currentCatShade;
+let currentTypeRect;
+let currentTypeRectColor;
 let moreInfoNameLength;
+let selectedTypeAmount;
 // makes data accessable for percantage function as variables
 let importedData;
 let selectedYear = 2016;
@@ -193,6 +197,7 @@ function updateDefaultWindow(rootNode, svg){
             .attr('width', 200)
             .attr('height', 100)
             .attr('fill', "white")
+            .attr("rx", "25")
             .style("pointer-events", "none")
 
     moreInfoWindow
@@ -337,7 +342,8 @@ function updateWasteCategoryWindow(data, svg){
                         return categoryManagerFunction(d, 'name');
                       }) //data is used to access the leaf node properties.
                       .attr("font-size", "11px")
-                      .attr("fill", "black")
+                      .attr("fill", "#FFFFFF")
+                      .style("text-shadow", "1px 1px 0 #000000")
                       .style("pointer-events", "none");
                   }
               )
@@ -357,7 +363,8 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'amount');
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
-                  .attr("fill", "black")
+                  .attr("fill", "#FFFFFF")
+                  .style("text-shadow", "1px 1px 0 #000000")
                   .style("pointer-events", "none");
               }
           )
@@ -377,7 +384,8 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'percentage');
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
-                  .attr("fill", "black")
+                  .attr("fill", "#FFFFFF")
+                  .style("text-shadow", "1px 1px 0 #000000")
                   .style("pointer-events", "none");
               }
           )
@@ -432,7 +440,8 @@ function updateWasteCategoryWindow(data, svg){
                       return categoryManagerFunction(d, 'name');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "black")
+                    .attr("fill", "#FFFFFF")
+                    .style("text-shadow", "1px 1px 0 #000000")
                     .style("pointer-events", "none");
                 }
             )
@@ -453,7 +462,8 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'amount');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "black")
+                    .attr("fill", "#FFFFFF")
+                    .style("text-shadow", "1px 1px 0 #000000")
                     .style("pointer-events", "none");
                 }
             )
@@ -474,7 +484,9 @@ function updateWasteCategoryWindow(data, svg){
                     return categoryManagerFunction(d, 'percentage');
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
-                    .attr("fill", "black")
+                    .attr("fill", "#FFFFFF")
+                    .style("text-shadow", "1px 1px 0 #000000")
+                    .attr("font-weight", "700")
                     .style("pointer-events", "none");
                 }
             )
@@ -523,11 +535,14 @@ console.log(data)
         .attr("visibility", "hidden");
         wasteTypeWindow
             .append("rect")
+                .attr("class", "wasteTypeRect")
                 .attr('x', 60)
                 .attr('y', 135)
                 .attr('width', SvgSize.width - 120)
-                .attr('height', SvgSize.height - 195)
-                .attr('fill', "#ededed")
+                .attr('height', SvgSize.height - 215)
+                .attr('fill', currentRectColor)
+                .style("filter", currentCatShade)
+
     } else {
         wasteTypeWindow = d3.select("#wasteTypeWindow");
     }
@@ -571,30 +586,46 @@ console.log(data)
                 .attr("width", d => {
                     return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                 })
-                .attr("height", 120)
-                .style("fill", "gray")
+                .attr("height", catRectHeight)
+                .style("fill", (d, i) => wasteTypeSwitchFunction(d, i))
+                .on("mouseover", mouseOverFunction)
+                .on("mouseout", mouseOutFunction)
+                .on("mousemove", mouseMoveFunction)
             }
         )
 
-    wasteTypeWindow
-        .selectAll('.wasteTypeTag')
-        .data(wasteTypeRootNode, d => d.name)
-        .join(
-            function(enter){
-                return enter
-                .append("text")
-                .attr("class", '.wasteTypeTag')
-                .text(d => {
-                    if ((x(d.x1) - x(d.x0)) > 80){
-                        return d.name
-                    } else {
-                        return null
-                    }
-                })
-                .attr('x', d => x(d.x0))
-                .attr("y", 400)
-            }
-        )
+
+        // more info tool tip window
+        let typeMoreInfoWindow = svg.append('g')
+            .attr('id', "typeMoreInfoWindow")
+            .attr("visibility", "hidden");
+
+        typeMoreInfoWindow
+            .append("rect")
+                .attr('id', "typeMoreInfoWindowRect")
+                .attr('height', 100)
+                .attr("rx", "25");
+
+        typeMoreInfoWindow
+            .append("text")
+                .attr("id", "typeMoreInfoTitle")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+
+        typeMoreInfoWindow
+            .append("text")
+                .attr("id", "typeMoreInfoAmount")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
+
+        typeMoreInfoWindow
+            .append("text")
+                .attr("id", "typeMoreInfoPercentage")
+                .attr("font-size", "15px")
+                .attr("fill", "black")
+                .style("pointer-events", "none");
 }
 
 function update(rootNode, svg){
@@ -644,6 +675,12 @@ function getPercentageFunction(d, type) {
   if (type === "categoryWindow") {
     const amount = d.value;
     const amountTotal = selectedWasteCategoryAmount;
+
+    return `${Math.floor(amount / amountTotal * 100)}%`;
+  }
+  if (type === "typesWindow") {
+    const amount = d.value;
+    const amountTotal = selectedTypeAmount;
 
     return `${Math.floor(amount / amountTotal * 100)}%`;
   }
@@ -827,6 +864,31 @@ function catBarChartSwitchFunction(d, i) {
 
   }
 }
+function wasteTypeSwitchFunction(d, i) {
+  switch (i) {
+  case 0:
+  return "#FFFFFF";
+  break;
+  case 1:
+  return "#E8E8E8";
+  break;
+  case 2:
+  return "#D3D3D3";
+  break;
+  case 3:
+  return "#BEBEBE";
+  break;
+  case 4:
+  return "#A8A8A8";
+  break;
+  case 5:
+  return "#888888";
+  break;
+  case 6:
+  return "#696969";
+  break;
+  }
+}
 //***Interactive DOM Element Functions ******************************************************
 //functions that occur while the mouse is over an element
 function mouseOverFunction(event, d) {
@@ -845,9 +907,17 @@ function mouseOverFunction(event, d) {
        if (this.getBoundingClientRect().height === catRectHeight) {
        currentCatRect = this;
        currentCatRectColor = this.style.fill;
+       currentCatShade = this.style.filter;
 
        d3.select(this)
        .style("fill", d3.color(currentCatRectColor).darker(2).formatHex())
+      }
+   }
+   if (currentWindow === windowEnum.typesView) {
+
+       if (this.getBoundingClientRect().height === catRectHeight) {
+       currentTypeRect = this;
+       currentTypeRectColor = this.style.fill;
       }
    }
 }
@@ -875,11 +945,23 @@ function mouseOutFunction(d) {
          hideMoreInfo(d);
        };
     }
+    if (currentWindow === windowEnum.typesView) {
+     if (this.getBoundingClientRect().height === catRectHeight) {
+          // hides the more info window when mouse leaves the rect
+
+          hideMoreInfo(d);
+        };
+     }
 }
 
 //live mouse location for more info tooltip
 function mouseMoveFunction(event, d) {
+  //mouse location
   var coords = d3.pointer(event);
+  // using this cycle to update wasteTypeRect background colour
+  d3.select(".wasteTypeRect")
+  .attr('fill', currentRectColor)
+  .style("filter", currentCatShade)
   //Displays pop up window if the rectangle is too small
   //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
   if (currentWindow === windowEnum.defaultView) {
@@ -955,9 +1037,56 @@ function mouseMoveFunction(event, d) {
            .attr("y", coords[1]-100 + 75)
            .text(getPercentageFunction(d, "categoryWindow"))
            .attr('visibility', "visible")
-
-
          }
+    }
+    if (currentWindow === windowEnum.typesView) {
+
+       if (this.getBoundingClientRect().height === catRectHeight) {
+        moreInfoNameLength = d.name.length;
+
+        d3.select("#typeMoreInfoWindow")
+          .attr('x', (d) =>{
+            return moreInfoSwapSides(event, d);
+          })
+          .attr('y', coords[1]-100);
+
+        d3.select("#typeMoreInfoWindowRect")
+            .attr('x', (d) =>{
+             return moreInfoSwapSides(event, d);
+            })
+          .attr('y', coords[1]-100)
+          .attr('width', moreInfoNameLength < 16 ? 200 : moreInfoNameLength * 10)
+          .attr('fill', currentTypeRectColor)
+          .attr('visibility', "visible");
+
+        d3.select("#typeMoreInfoTitle")
+            .attr('x', (d) =>{
+             return moreInfoSwapSides(event, d) + 20;
+            })
+            .attr("y", coords[1]-100 + 35)
+            .text(d.name)
+            .attr('visibility', "visible");
+
+        d3.select("#typeMoreInfoWindow")
+           .attr('visibility', "visible");
+        d3.select("#typeMoreInfoAmount")
+            .attr('x', (d) =>{
+             return moreInfoSwapSides(event, d) + 20;
+            })
+            .attr("y", coords[1]-100 + 55)
+            .text(d.value.toLocaleString('en-US') + " tonnes")
+            .attr('visibility', "visible");
+
+        d3.select("#typeMoreInfoWindow")
+           .attr('visibility', "visible");
+        d3.select("#typeMoreInfoPercentage")
+            .attr('x', (d) =>{
+              return moreInfoSwapSides(event, d) + 20;
+            })
+            .attr("y", coords[1]-100 + 75)
+            .text(getPercentageFunction(d, "categoryWindow"))
+            .attr('visibility', "visible")
+        }
     }
 }
 
@@ -968,7 +1097,7 @@ var coords = d3.pointer(event);
   }
   else
   {
-    return moreInfoNameLength < 16 ? coords[0]-200 : coords[0] - moreInfoNameLength * 8
+    return moreInfoNameLength < 16 ? coords[0]-200 : coords[0] - moreInfoNameLength * 10
   }
 }
 
@@ -984,6 +1113,12 @@ function hideMoreInfo(d) {
   d3.select("#catMoreInfoTitle").attr('visibility', "hidden");
   d3.select("#catMoreInfoAmount").attr('visibility', "hidden");
   d3.select("#catMoreInfoPercentage").attr('visibility', "hidden");
+
+  d3.select("#typeMoreInfoWindow").attr('visibility', "hidden");
+  d3.select("#typeMoreInfoWindowRect").attr('visibility', "hidden");
+  d3.select("#typeMoreInfoTitle").attr('visibility', "hidden");
+  d3.select("#typeMoreInfoAmount").attr('visibility', "hidden");
+  d3.select("#typeMoreInfoPercentage").attr('visibility', "hidden");
 
 }
 
@@ -1058,6 +1193,7 @@ function openWasteTypeWindow(d, svg){
     currentWindow = windowEnum.typesView;
 
     selectedSourceOrDestination = d.name;
+    selectedTypeAmount = d.value;
 
     hideMoreInfo(d);
 
