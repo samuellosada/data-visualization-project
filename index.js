@@ -254,7 +254,7 @@ function updateWasteCategoryWindow(data, svg){
         .append("text")
             .attr("id", "wasteCategoryTitle")
             .attr("x", 60)
-            .attr("y", 60)
+            .attr("y", 100)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -263,7 +263,7 @@ function updateWasteCategoryWindow(data, svg){
         .append("text")
             .attr("id", "wasteCategoryAmount")
             .attr("x", SvgSize.width - 200)
-            .attr("y", 60)
+            .attr("y", 100)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -436,47 +436,49 @@ function updateWasteCategoryWindow(data, svg){
                     .style("pointer-events", "none");
                 }
             )
-        wasteCategoryWindow
-        .selectAll(".text2")
-        .data(wasteDestinationRootNode, d => d.value)
-        .join(
-            function(enter){
-                return enter
-                .append('text')
-                .attr('class', "wasteDestinationsAmount")
-                .attr("x", (d) => {
-                  return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
-              })
-                .attr("y", 440)
-                .text((d) => {
-                  return categoryManagerFunction(d, 'amount');
-                }) //data is used to access the leaf node properties.
-                .attr("font-size", "11px")
-                .attr("fill", "black")
-                .style("pointer-events", "none");
-            }
-        )
-        wasteCategoryWindow
-        .selectAll(".text2")
-        .data(wasteDestinationRootNode, d => d.value)
-        .join(
-            function(enter){
 
-                return enter
-                .append('text')
-                .attr('class', "wasteDestinationPercentage")
-                .attr("x", (d) => {
-                  return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
-              })
-                .attr("y", 460)
-                .text((d) => {
-                  return categoryManagerFunction(d, 'percentage');
-                }) //data is used to access the leaf node properties.
-                .attr("font-size", "11px")
-                .attr("fill", "black")
-                .style("pointer-events", "none");
-            }
-        )
+        wasteCategoryWindow
+            .selectAll(".text2")
+            .data(wasteDestinationRootNode, d => d.value)
+            .join(
+                function(enter){
+                    return enter
+                    .append('text')
+                    .attr('class', "wasteDestinationsAmount")
+                    .attr("x", (d) => {
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
+                })
+                    .attr("y", 440)
+                    .text((d) => {
+                    return categoryManagerFunction(d, 'amount');
+                    }) //data is used to access the leaf node properties.
+                    .attr("font-size", "11px")
+                    .attr("fill", "black")
+                    .style("pointer-events", "none");
+                }
+            )
+        wasteCategoryWindow
+            .selectAll(".text2")
+            .data(wasteDestinationRootNode, d => d.value)
+            .join(
+                function(enter){
+
+                    return enter
+                    .append('text')
+                    .attr('class', "wasteDestinationPercentage")
+                    .attr("x", (d) => {
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
+                })
+                    .attr("y", 460)
+                    .text((d) => {
+                    return categoryManagerFunction(d, 'percentage');
+                    }) //data is used to access the leaf node properties.
+                    .attr("font-size", "11px")
+                    .attr("fill", "black")
+                    .style("pointer-events", "none");
+                }
+            )
+
         // more info tool tip window
         let catMoreInfoWindow = svg.append('g')
             .attr('id', "catMoreInfoWindow")
@@ -526,7 +528,7 @@ function updateWasteTypeWindow(data, svg){
                 .attr('y', 60)
                 .attr('width', SvgSize.width - 120)
                 .attr('height', SvgSize.height - 120)
-                .attr('fill', "#fafafa")
+                .attr('fill', "#ededed")
     } else {
         wasteTypeWindow = d3.select("#wasteTypeWindow");
     }
