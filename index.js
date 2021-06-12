@@ -229,7 +229,7 @@ function selectSingleStackedBarChartData(searchedArray){
         let value = totalAmount;
         let x0 = count;
         let x1 = count + value;
-        count += value; 
+        count += value;
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
