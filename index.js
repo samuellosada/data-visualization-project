@@ -229,7 +229,7 @@ function selectSingleStackedBarChartData(searchedArray){
         let value = totalAmount;
         let x0 = count;
         let x1 = count + value;
-        count += value; 
+        count += value;
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
@@ -541,7 +541,7 @@ function updateWasteCategoryWindow(data, svg){
                 .attr("x", SvgSize.width - 81)
                 .attr("y", 75)
                 .attr("fill", "black")
-                .on('click', () => closeWasteCategoryWindow())
+                .style("pointer-events", "none");
 
         // more info tool tip window
         let catMoreInfoWindow = svg.append('g')
@@ -706,7 +706,7 @@ function updateWasteTypeWindow(data, svg){
                 .attr("x", SvgSize.width - 111)
                 .attr("y", 210)
                 .attr("fill", "black")
-                .on('click', () => closeWasteTypeWindow())
+                .style("pointer-events", "none");
 
 }
 
@@ -762,7 +762,7 @@ function getPercentageFunction(d, type) {
   }
   if (type === "typesWindow") {
     const amount = d.value;
-    const amountTotal = selectedTypeAmount;
+    const amountTotal = selectedWasteCategoryAmount;
 
     return `${Math.round(amount / amountTotal * 100*10)/10}%`;
   }
