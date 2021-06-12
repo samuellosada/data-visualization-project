@@ -8,6 +8,7 @@ let currentRect;
 let currentRectColor;
 let currentCatRect;
 let currectCatRectColor;
+let moreInfoNameLength;
 // makes data accessable for percantage function as variables
 let importedData;
 let selectedYear = 2016;
@@ -484,7 +485,6 @@ function updateWasteCategoryWindow(data, svg){
         catMoreInfoWindow
             .append("rect")
                 .attr('id', "catMoreInfoWindowRect")
-                .attr('width', 200)
                 .attr('height', 100)
                 .attr('fill', "pink")
                 .attr("rx", "25");
@@ -768,19 +768,19 @@ function textColourSwitchFunction(d) {
 function catBarChartSwitchFunction(d, i) {
   switch (d.name) {
     case destinationNames.energyrecovery:
-      return "brightness(240%)";
+      return "brightness(180%)";
       break;
     case destinationNames.landfillEnergy:
-      return "brightness(230%)";
+      return "brightness(170%)";
       break;
     case destinationNames.landfillDisposal:
-      return "brightness(220%)";
+      return "brightness(160%)";
       break;
     case destinationNames.recycling:
-      return "brightness(210%)";
+      return "brightness(150%)";
       break;
     case destinationNames.treatment:
-      return "brightness(200%)";
+      return "brightness(140%)";
       break;
     case destinationNames.otherDisposal:
     case sourcesNames.waste:
@@ -913,6 +913,8 @@ function mouseMoveFunction(event, d) {
    if (currentWindow === windowEnum.categoryView) {
      if (this.getBoundingClientRect().height === catRectHeight) {
 
+       moreInfoNameLength = d.name.length;
+
        d3.select("#catMoreInfoWindow")
          .attr('x', (d) =>{
            return moreInfoSwapSides(event, d);
@@ -924,6 +926,7 @@ function mouseMoveFunction(event, d) {
             return moreInfoSwapSides(event, d);
            })
          .attr('y', coords[1]-100)
+         .attr('width', moreInfoNameLength < 16 ? 200 : moreInfoNameLength * 8)
          .attr('visibility', "visible");
 
        d3.select("#catMoreInfoTitle")
@@ -966,7 +969,7 @@ var coords = d3.pointer(event);
   }
   else
   {
-    return coords[0]-200
+    return moreInfoNameLength < 16 ? coords[0]-200 : coords[0] - moreInfoNameLength * 8
   }
 }
 
