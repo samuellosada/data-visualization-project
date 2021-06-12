@@ -558,10 +558,20 @@ function updateWasteTypeWindow(data, svg){
             .append("rect")
                 .attr("class", "wasteTypeRect")
                 .attr('x', 60)
-                .attr('y', 135)
-                .attr('width', SvgSize.width - 120)
-                .attr('height', SvgSize.height - 215)
+                .attr('y', 155)
+                .attr('width', SvgSize.width - 115)
+                .attr('height', SvgSize.height - 220)
                 .attr('fill', currentRectColor)
+                .style("filter", currentCatShade)
+
+            wasteTypeWindow
+            .append("rect")
+                .attr("class", "wasteTypeRect")
+                .attr('x', 65)
+                .attr('y', 160)
+                .attr('width', SvgSize.width - 125)
+                .attr('height', SvgSize.height - 230)
+                .attr('fill', "#ededed")
                 .style("filter", currentCatShade)
 
     } else {
@@ -572,7 +582,7 @@ function updateWasteTypeWindow(data, svg){
         .append("text")
             .attr("id", "wasteTypeTitle")
             .attr("x", 90)
-            .attr("y", 215)
+            .attr("y", 250)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -581,7 +591,7 @@ function updateWasteTypeWindow(data, svg){
         .append("text")
             .attr("id", "wasteTypeAmount")
             .attr("x", SvgSize.width - 220)
-            .attr("y", 215)
+            .attr("y", 250)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black")
@@ -647,6 +657,27 @@ function updateWasteTypeWindow(data, svg){
                 .attr("font-size", "15px")
                 .attr("fill", "black")
                 .style("pointer-events", "none");
+
+
+        //BAck Button
+        wasteTypeWindow
+            .append("circle")
+                .attr("cx", SvgSize.width - 105)
+                .attr("cy", 205)
+                .style("fill", "#ededed")
+                .attr("r", 15)
+                .on('click', () => closeWasteTypeWindow())
+
+
+        wasteTypeWindow
+            .append('text')
+                .attr('id', "backButton2")
+                .html("&#10006")
+                .attr("x", SvgSize.width - 111)
+                .attr("y", 210)
+                .attr("fill", "black")
+                .on('click', () => closeWasteTypeWindow())
+
 }
 
 function update(rootNode, svg){
@@ -1169,19 +1200,6 @@ function openWasteCategoryWindow(d, svg){
         .text(selectedWasteCategoryAmount.toLocaleString('en-US') + " tonnes")
         .attr('visibility', "visible");
     };
-
-    //new button should only be made if one does not already exist.
-    /*
-    if (!document.getElementById('backButton')){
-        let backButton = document.createElement('button');
-        backButton.innerHTML = "&#10006"; // unicode for x symbol
-        backButton.setAttribute('id', "backButton");
-        backButton.onclick = () => {closeWasteCategoryWindow()};
-
-        document.getElementById('visualization').appendChild(backButton);
-    }
-    */
-
 }
 
 function closeWasteCategoryWindow(){
@@ -1233,17 +1251,6 @@ function openWasteTypeWindow(d, svg){
         .text(d.value.toLocaleString('en-US') + " tonnes")
         .attr('visibility', "visible")
     };
-
-    //new button should only be made if one does not already exist.
-    if (!document.getElementById('backButton2')){
-        let backButton = document.createElement('button');
-        backButton.innerHTML = "Second &#10006"; // unicode for x symbol
-        backButton.setAttribute('id', "backButton2");
-        backButton.onclick = () => {closeWasteTypeWindow()};
-
-        document.getElementById('visualization').appendChild(backButton);
-    }
-
 }
 
 function closeWasteTypeWindow(){
