@@ -229,7 +229,7 @@ function selectSingleStackedBarChartData(searchedArray){
         let value = totalAmount;
         let x0 = count;
         let x1 = count + value;
-        count += value;
+        count += value; 
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
@@ -261,7 +261,7 @@ function updateWasteCategoryWindow(data, svg){
         .append("text")
             .attr("id", "wasteCategoryTitle")
             .attr("x", 60)
-            .attr("y", 100)
+            .attr("y", 120)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -270,7 +270,7 @@ function updateWasteCategoryWindow(data, svg){
         .append("text")
             .attr("id", "wasteCategoryAmount")
             .attr("x", SvgSize.width - 200)
-            .attr("y", 100)
+            .attr("y", 120)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -280,7 +280,7 @@ function updateWasteCategoryWindow(data, svg){
             .text("Industry Sources:")
             .attr("class", "barChartTitle")
             .attr("x", 60)
-            .attr("y", 150)
+            .attr("y", 170)
             .attr("font-size", "15px")
             .attr("fill", "black")
 
@@ -289,7 +289,7 @@ function updateWasteCategoryWindow(data, svg){
             .text("Waste Destinations:")
             .attr("class", "barChartTitle")
             .attr("x", 60)
-            .attr("y", 350)
+            .attr("y", 370)
             .attr("font-size", "15px")
             .attr("fill", "black")
 
@@ -311,7 +311,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", d => {
                         return x(d.x0)
                     })
-                    .attr("y", 175)
+                    .attr("y", 195)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0);
                     })
@@ -339,7 +339,7 @@ function updateWasteCategoryWindow(data, svg){
                       .attr("x", (d) => {
                         return catCentreTextFunction(x(d.x0), x(d.x1), `${d.name}`);
                     })
-                      .attr("y", 220)
+                      .attr("y", 240)
                       .text((d) => {
                         return categoryManagerFunction(d, 'name');
                       }) //data is used to access the leaf node properties.
@@ -360,7 +360,7 @@ function updateWasteCategoryWindow(data, svg){
                   .attr("x", (d) => {
                     return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
                 })
-                  .attr("y", 240)
+                  .attr("y", 260)
                   .text((d) => {
                     return categoryManagerFunction(d, 'amount');
                   }) //data is used to access the leaf node properties.
@@ -381,7 +381,7 @@ function updateWasteCategoryWindow(data, svg){
                   .attr("x", (d) => {
                     return catCentreTextFunction(x(d.x0), x(d.x1), `${categoryManagerFunction(d, 'percentage')}%`);
                 })
-                  .attr("y", 260)
+                  .attr("y", 280)
                   .text((d) => {
                     return categoryManagerFunction(d, 'percentage');
                   }) //data is used to access the leaf node properties.
@@ -411,7 +411,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", d => {
                         return x(d.x0)
                     })
-                    .attr("y", 375)
+                    .attr("y", 395)
                     .attr("width", d => {
                         return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                     })
@@ -438,7 +438,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", (d) => {
                       return catCentreTextFunction(x(d.x0), x(d.x1), `${d.name}`);
                   })
-                    .attr("y", 420)
+                    .attr("y", 440)
                     .text((d) => {
                       return categoryManagerFunction(d, 'name');
                     }) //data is used to access the leaf node properties.
@@ -460,7 +460,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", (d) => {
                     return catCentreTextFunction(x(d.x0), x(d.x1), `${d.value} tonnes`);
                 })
-                    .attr("y", 440)
+                    .attr("y", 460)
                     .text((d) => {
                     return categoryManagerFunction(d, 'amount');
                     }) //data is used to access the leaf node properties.
@@ -482,7 +482,7 @@ function updateWasteCategoryWindow(data, svg){
                     .attr("x", (d) => {
                     return catCentreTextFunction(x(d.x0), x(d.x1), `${categoryManagerFunction(d, 'percentage')}%`);
                 })
-                    .attr("y", 460)
+                    .attr("y", 480)
                     .text((d) => {
                     return categoryManagerFunction(d, 'percentage');
                     }) //data is used to access the leaf node properties.
@@ -493,6 +493,25 @@ function updateWasteCategoryWindow(data, svg){
                     .style("pointer-events", "none");
                 }
             )
+
+        // Back Button
+        wasteCategoryWindow
+            .append("circle")
+                .attr("cx", SvgSize.width - 75)
+                .attr("cy", 70)
+                .style("fill", "#ededed")
+                .attr("r", 15)
+                .on('click', () => closeWasteCategoryWindow())
+
+
+        wasteCategoryWindow
+            .append('text')
+                .attr('id', "backButton")
+                .html("&#10006")
+                .attr("x", SvgSize.width - 81)
+                .attr("y", 75)
+                .attr("fill", "black")
+                .on('click', () => closeWasteCategoryWindow())
 
         // more info tool tip window
         let catMoreInfoWindow = svg.append('g')
@@ -1152,6 +1171,7 @@ function openWasteCategoryWindow(d, svg){
     };
 
     //new button should only be made if one does not already exist.
+    /*
     if (!document.getElementById('backButton')){
         let backButton = document.createElement('button');
         backButton.innerHTML = "&#10006"; // unicode for x symbol
@@ -1160,6 +1180,7 @@ function openWasteCategoryWindow(d, svg){
 
         document.getElementById('visualization').appendChild(backButton);
     }
+    */
 
 }
 
