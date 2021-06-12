@@ -536,7 +536,7 @@ console.log(data)
         .append("text")
             .attr("id", "wasteTypeTitle")
             .attr("x", 90)
-            .attr("y", 195)
+            .attr("y", 215)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -545,7 +545,7 @@ console.log(data)
         .append("text")
             .attr("id", "wasteTypeAmount")
             .attr("x", SvgSize.width - 220)
-            .attr("y", 195)
+            .attr("y", 215)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black")
@@ -554,7 +554,7 @@ console.log(data)
 
     x = d3.scaleLinear()
         .domain([d3.min(wasteTypeRootNode, d => d.x0), d3.max(wasteTypeRootNode, d => d.x1)])
-        .range([60, SvgSize.width - 60])
+        .range([90, SvgSize.width - 90])
 
     wasteTypeWindow
         .selectAll(".rect4")
@@ -567,7 +567,7 @@ console.log(data)
                 .attr("x", d => {
                     return x(d.x0)
                 })
-                .attr("y", 375)
+                .attr("y", 300)
                 .attr("width", d => {
                     return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                 })
