@@ -216,6 +216,10 @@ function updateDefaultWindow(rootNode, svg){
 }
 
 function selectSingleStackedBarChartData(searchedArray){
+    searchedArray.sort(function(a, b){
+        return a.totalAmount - b.totalAmount
+    })
+
     var rootNode = [];
 
     let count = 0;
@@ -229,10 +233,8 @@ function selectSingleStackedBarChartData(searchedArray){
 
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
-//fixed
-    return rootNode.sort((a, b) => {
-        return d3.ascending(a.value, b.value)
-    });
+    return rootNode;
+    
 }
 
 function updateWasteCategoryWindow(data, svg){
@@ -527,20 +529,18 @@ function updateWasteCategoryWindow(data, svg){
 }
 
 function updateWasteTypeWindow(data, svg){
-
     let wasteTypeWindow;
     if(!document.getElementById("wasteTypeWindow")){
         wasteTypeWindow = svg.append('g')
         .attr('id', "wasteTypeWindow")
         .attr("visibility", "hidden");
-
         wasteTypeWindow
             .append("rect")
                 .attr("class", "wasteTypeRect")
                 .attr('x', 60)
-                .attr('y', 60)
+                .attr('y', 135)
                 .attr('width', SvgSize.width - 120)
-                .attr('height', SvgSize.height - 120)
+                .attr('height', SvgSize.height - 215)
                 .attr('fill', currentRectColor)
                 .style("filter", currentCatShade)
 
@@ -551,8 +551,8 @@ function updateWasteTypeWindow(data, svg){
     wasteTypeWindow
         .append("text")
             .attr("id", "wasteTypeTitle")
-            .attr("x", 120)
-            .attr("y", 120)
+            .attr("x", 90)
+            .attr("y", 215)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
             .attr("fill", "black");
@@ -560,13 +560,11 @@ function updateWasteTypeWindow(data, svg){
     wasteTypeWindow
         .append("text")
             .attr("id", "wasteTypeAmount")
-            .attr("x", SvgSize.width - 260)
-            .attr("y", 120)
+            .attr("x", SvgSize.width - 220)
+            .attr("y", 215)
             .attr("font-size", "15px")
             .attr("font-weight", "700")
-            .attr("fill", "black");
-
-            console.log(data)
+            .attr("fill", "black")
 
     let wasteTypeRootNode = selectSingleStackedBarChartData(data.wasteTypes);
 
@@ -585,7 +583,7 @@ function updateWasteTypeWindow(data, svg){
                 .attr("x", d => {
                     return x(d.x0)
                 })
-                .attr("y", 375)
+                .attr("y", 300)
                 .attr("width", d => {
                     return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                 })
