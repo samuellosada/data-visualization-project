@@ -610,9 +610,9 @@ function update(rootNode, svg){
 
 //***Centre Text Function ******************************************************
 function centreTextFunction(p0, p1, text, yDiff) {
-    const letterWidth = 8;
+    const letterWidth = 7.5;
     const centrePoint = (p1 - p0) / 2;
-    const centreOfText = text.length * letterWidth / 2;
+    const centreOfText = (text.length + text.split(" ").length) * letterWidth / 2;
     if (yDiff !== undefined) {
         return p0 + centrePoint + yDiff;
     } else {
@@ -621,9 +621,9 @@ function centreTextFunction(p0, p1, text, yDiff) {
 }
 
 function catCentreTextFunction(p0, p1, text, yDiff) {
-    const letterWidth = 5.5;
+    const letterWidth = 4;
     const centrePoint = (p1 - p0) / 2;
-    const centreOfText = text.length * letterWidth / 2;
+    const centreOfText = (text.length + text.split(" ").length) * letterWidth / 2;
     if (yDiff !== undefined) {
         return p0 + centrePoint + yDiff;
     } else {
