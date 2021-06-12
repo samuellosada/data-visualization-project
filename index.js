@@ -402,7 +402,7 @@ function updateWasteCategoryWindow(data, svg){
                     } else {
                       return "#000000"
                     }
-                })  
+                })
                   .attr("font-weight", "700")
                   .style("pointer-events", "none");
               }
@@ -602,7 +602,6 @@ function updateWasteTypeWindow(data, svg){
                 .attr('width', SvgSize.width - 125)
                 .attr('height', SvgSize.height - 230)
                 .attr('fill', "#ededed")
-                .style("filter", currentCatShade)
 
     } else {
         wasteTypeWindow = d3.select("#wasteTypeWindow");
@@ -648,7 +647,8 @@ function updateWasteTypeWindow(data, svg){
                     return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
                 })
                 .attr("height", catRectHeight)
-                .style("fill", (d, i) => wasteTypeSwitchFunction(d, i))
+                .attr("fill", currentRectColor)
+                .style("filter", (d, i) => wasteTypeSwitchFunction(d, i))
                 .on("mouseover", mouseOverFunction)
                 .on("mouseout", mouseOutFunction)
                 .on("mousemove", mouseMoveFunction)
@@ -949,25 +949,25 @@ function catBarChartSwitchFunction(d, i) {
 function wasteTypeSwitchFunction(d, i) {
   switch (i) {
   case 0:
-  return "#FFFFFF";
+  return "saturate(25%)";
   break;
   case 1:
-  return "#E8E8E8";
+  return "saturate(50%)";
   break;
   case 2:
-  return "#D3D3D3";
+  return "saturate(75%)";
   break;
   case 3:
-  return "#BEBEBE";
+  return "saturate(100%)";
   break;
   case 4:
-  return "#A8A8A8";
+  return "saturate(125%)";
   break;
   case 5:
-  return "#888888";
+  return "saturate(150%)";
   break;
   case 6:
-  return "#696969";
+  return "saturate(175%)";
   break;
   }
 }
@@ -999,7 +999,7 @@ function mouseOverFunction(event, d) {
 
        if (this.getBoundingClientRect().height === catRectHeight) {
        currentTypeRect = this;
-       currentTypeRectColor = this.style.fill;
+       currentTypeRectColor = this.style.filter;
       }
    }
 }
@@ -1138,7 +1138,8 @@ function mouseMoveFunction(event, d) {
             })
           .attr('y', coords[1]-100)
           .attr('width', moreInfoNameLength < 16 ? 200 : moreInfoNameLength * 10)
-          .attr('fill', currentTypeRectColor)
+          .attr('fill', currentRectColor)
+          .style('filter', currentTypeRectColor)
           .attr('visibility', "visible");
 
         d3.select("#typeMoreInfoTitle")
