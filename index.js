@@ -96,18 +96,6 @@ function updateDefaultWindow(rootNode, svg){
         defaultWindow = d3.select("#defaultWindow");
     }
     defaultWindow
-      .selectAll("g")
-      .data(rootNode.leaves())
-        .enter()
-          .append("rect")
-          .attr('class', 'coverup')
-          .attr('x', (d) => {return d.x0})
-          .attr('y', (d) => {return d.y0})
-          .attr('width', SvgSize.width)
-          .attr('height', SvgSize.height)
-          .style("fill", "#fafafa");
-
-    defaultWindow
         .selectAll(".rect")
         .data(rootNode.leaves(), (d)=> {
             return d.data.totalAmount;
@@ -250,17 +238,17 @@ function updateWasteCategoryWindow(data, svg){
         .attr('id', "wasteCategoryWindow")
         .attr("visibility", "hidden");
 
+        wasteCategoryWindow
+        .append("rect")
+            .attr('x', 30)
+            .attr('y', 30)
+            .attr('width', SvgSize.width - 60)
+            .attr('height', SvgSize.height - 60)
+            .attr('fill', "white")
+
     } else {
         wasteCategoryWindow = d3.select("#wasteCategoryWindow");
     }
-
-    wasteCategoryWindow
-    .append("rect")
-        .attr('x', 30)
-        .attr('y', 30)
-        .attr('width', SvgSize.width - 60)
-        .attr('height', SvgSize.height - 60)
-        .attr('fill', "white")
 
     wasteCategoryWindow
         .append("text")
@@ -840,7 +828,7 @@ function catBarChartSwitchFunction(d, i) {
   }
 }
 //***Interactive DOM Element Functions ******************************************************
-
+//functions that occur while the mouse is over an element
 function mouseOverFunction(event, d) {
     //can only happen if in default window
    if (currentWindow === windowEnum.defaultView) {
@@ -862,7 +850,7 @@ function mouseOverFunction(event, d) {
       }
    }
 }
-
+//functions that occur when the mouse leaves the element
 function mouseOutFunction(d) {
  //can only happen if in default window
  if (currentWindow === windowEnum.defaultView) {
@@ -891,7 +879,6 @@ function mouseOutFunction(d) {
 //live mouse location for more info tooltip
 function mouseMoveFunction(event, d) {
   var coords = d3.pointer(event);
-console.log(coords[0], coords[1]);
   //Displays pop up window if the rectangle is too small
   //getBoundingClientRect returns the size of an element and its position relative to the viewport. Because element.width doesn't return float.
   if (currentWindow === windowEnum.defaultView) {
@@ -1009,18 +996,21 @@ function openWasteCategoryWindow(d, svg){
     selectedWasteCategory = d.data.name;
     selectedWasteCategoryAmount = d.data.totalAmount;
 
+    console.log(selectedWasteCategory);
+    console.log(selectedWasteCategoryAmount);
+
     updateWasteCategoryWindow(d, svg);
 
     //change visiibility of elements
     d3.select("#wasteCategoryWindow").attr('visibility', "visible");
     d3.select("#wasteCategoryTitle")
-        .text(d.data.name)
+        .text(selectedWasteCategory)
         .attr('visibility', "visible");
 
     d3.select("#wasteCategoryWindow").attr('visibility', "visible");
     d3.select("#wasteCategoryAmount")
-        .text(d.data.totalAmount.toLocaleString('en-US') + " tonnes")
-        .attr('visibility', "visible")
+        .text(selectedWasteCategoryAmount.toLocaleString('en-US') + " tonnes")
+        .attr('visibility', "visible");
     };
 
     //new button should only be made if one does not already exist.
@@ -1146,19 +1136,19 @@ function main(){
         yearSelectionButtons.appendChild(button2016);
         button2016.innerHTML = "2016";
         button2016.value = 2016;
-        button2016.onclick = () => {handleYearSelection(button2016, data, svg), closeWasteCategoryWindow()}
+        button2016.onclick = () => {handleYearSelection(button2016, data, svg)}
 
         let button2017 = document.createElement('button');
         yearSelectionButtons.appendChild(button2017);
         button2017.innerHTML = "2017";
         button2017.value = 2017;
-        button2017.onclick = () => {handleYearSelection(button2017, data, svg), closeWasteCategoryWindow()}
+        button2017.onclick = () => {handleYearSelection(button2017, data, svg)}
 
         let button2018 = document.createElement('button');
         yearSelectionButtons.appendChild(button2018);
         button2018.innerHTML = "2018";
         button2018.value = 2018;
-        button2018.onclick = () => {handleYearSelection(button2018, data, svg), closeWasteCategoryWindow()}
+        button2018.onclick = () => {handleYearSelection(button2018, data, svg)}
 
     }, (err) => {
         alert(err);
