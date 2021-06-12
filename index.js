@@ -174,10 +174,10 @@ function updateDefaultWindow(rootNode, svg){
         .enter()
             .append("text")
             .attr("x", (d) => {
-              return centreTextFunction(d.x0, d.x1, `10%`);
+              return centreTextFunction(d.x0, d.x1, `100%`);
              })
             .attr("y", (d) => {
-              return centreTextFunction(d.y0, d.y1, `10%`, 20);
+              return centreTextFunction(d.y0, d.y1, `100%`, 20);
             })
             .text((d) => {
               return getPercentageFunction(d, "defaultWindow");
@@ -234,7 +234,7 @@ function selectSingleStackedBarChartData(searchedArray){
         rootNode.push({name, value, x0, x1, wasteTypes});
     }
     return rootNode;
-    
+
 }
 
 function updateWasteCategoryWindow(data, svg){
@@ -379,7 +379,7 @@ function updateWasteCategoryWindow(data, svg){
                   .append('text')
                   .attr('class', "wasteSourcePercentage")
                   .attr("x", (d) => {
-                    return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `${categoryManagerFunction(d, 'percentage')}%`);
                 })
                   .attr("y", 280)
                   .text((d) => {
@@ -388,6 +388,7 @@ function updateWasteCategoryWindow(data, svg){
                   .attr("font-size", "11px")
                   .attr("fill", "#FFFFFF")
                   .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
+                  .attr("font-weight", "700")
                   .style("pointer-events", "none");
               }
           )
@@ -479,7 +480,7 @@ function updateWasteCategoryWindow(data, svg){
                     .append('text')
                     .attr('class', "wasteDestinationPercentage")
                     .attr("x", (d) => {
-                    return catCentreTextFunction(x(d.x0), x(d.x1), `10%`);
+                    return catCentreTextFunction(x(d.x0), x(d.x1), `${categoryManagerFunction(d, 'percentage')}%`);
                 })
                     .attr("y", 480)
                     .text((d) => {
@@ -721,19 +722,19 @@ function getPercentageFunction(d, type) {
       const amount = d.data.totalAmount; //amount of data per category
       const amountTotal = yearData.yearTotal; //total year data
 
-      return `${Math.floor(amount / amountTotal * 100)}%`;
+      return `${Math.round(amount / amountTotal * 100*10)/10}%`;
     }
   if (type === "categoryWindow") {
     const amount = d.value;
     const amountTotal = selectedWasteCategoryAmount;
 
-    return `${Math.floor(amount / amountTotal * 100)}%`;
+    return `${Math.round(amount / amountTotal * 100*10)/10}%`;
   }
   if (type === "typesWindow") {
     const amount = d.value;
     const amountTotal = selectedTypeAmount;
 
-    return `${Math.floor(amount / amountTotal * 100)}%`;
+    return `${Math.round(amount / amountTotal * 100*10)/10}%`;
   }
 }
 
