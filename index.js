@@ -343,7 +343,7 @@ function updateWasteCategoryWindow(data, svg){
                       }) //data is used to access the leaf node properties.
                       .attr("font-size", "11px")
                       .attr("fill", "#FFFFFF")
-                      .style("text-shadow", "1px 1px 0 #000000")
+                      .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                       .style("pointer-events", "none");
                   }
               )
@@ -364,7 +364,7 @@ function updateWasteCategoryWindow(data, svg){
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
                   .attr("fill", "#FFFFFF")
-                  .style("text-shadow", "1px 1px 0 #000000")
+                  .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                   .style("pointer-events", "none");
               }
           )
@@ -385,7 +385,7 @@ function updateWasteCategoryWindow(data, svg){
                   }) //data is used to access the leaf node properties.
                   .attr("font-size", "11px")
                   .attr("fill", "#FFFFFF")
-                  .style("text-shadow", "1px 1px 0 #000000")
+                  .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                   .style("pointer-events", "none");
               }
           )
@@ -441,7 +441,7 @@ function updateWasteCategoryWindow(data, svg){
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
                     .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px 1px 0 #000000")
+                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                     .style("pointer-events", "none");
                 }
             )
@@ -463,7 +463,7 @@ function updateWasteCategoryWindow(data, svg){
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
                     .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px 1px 0 #000000")
+                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                     .style("pointer-events", "none");
                 }
             )
@@ -485,7 +485,7 @@ function updateWasteCategoryWindow(data, svg){
                     }) //data is used to access the leaf node properties.
                     .attr("font-size", "11px")
                     .attr("fill", "#FFFFFF")
-                    .style("text-shadow", "1px 1px 0 #000000")
+                    .style("text-shadow", "1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000")
                     .attr("font-weight", "700")
                     .style("pointer-events", "none");
                 }
