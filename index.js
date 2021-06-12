@@ -732,7 +732,7 @@ function getPercentageFunction(d, type) {
   }
   if (type === "typesWindow") {
     const amount = d.value;
-    const amountTotal = selectedTypeAmount;
+    const amountTotal = selectedWasteCategoryAmount;
 
     return `${Math.round(amount / amountTotal * 100*10)/10}%`;
   }
