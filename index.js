@@ -511,7 +511,7 @@ function updateWasteCategoryWindow(data, svg){
                 .attr("x", SvgSize.width - 81)
                 .attr("y", 75)
                 .attr("fill", "black")
-                .on('click', () => closeWasteCategoryWindow())
+                .style("pointer-events", "none");
 
         // more info tool tip window
         let catMoreInfoWindow = svg.append('g')
@@ -676,7 +676,7 @@ function updateWasteTypeWindow(data, svg){
                 .attr("x", SvgSize.width - 111)
                 .attr("y", 210)
                 .attr("fill", "black")
-                .on('click', () => closeWasteTypeWindow())
+                .style("pointer-events", "none");
 
 }
 
