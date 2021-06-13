@@ -1292,7 +1292,7 @@ function openWasteTypeWindow(d, svg){
     //change visiibility of elements
     d3.select("#wasteTypeWindow").attr('visibility', "visible");
     d3.select("#wasteTypeTitle")
-        .text(d.name)
+        .text(d.name + " Waste Types:")
         .attr('visibility', "visible");
 
     d3.select("#wasteTypeWindow").attr('visibility', "visible");
