@@ -343,7 +343,7 @@ function updateWasteCategoryWindow(data, svg){
                       .text((d) => {
                         return categoryManagerFunction(d, 'name');
                       }) //data is used to access the leaf node properties.
-                      .attr("font-size", "11px")
+                      .attr("font-size", "12px")
                       .attr("fill", () => {
                           if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
                             return "#ffffff"
@@ -369,7 +369,7 @@ function updateWasteCategoryWindow(data, svg){
                   .text((d) => {
                     return categoryManagerFunction(d, 'amount');
                   }) //data is used to access the leaf node properties.
-                  .attr("font-size", "11px")
+                  .attr("font-size", "12px")
                   .attr("fill", () => {
                     if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
                       return "#ffffff"
@@ -395,7 +395,7 @@ function updateWasteCategoryWindow(data, svg){
                   .text((d) => {
                     return categoryManagerFunction(d, 'percentage');
                   }) //data is used to access the leaf node properties.
-                  .attr("font-size", "11px")
+                  .attr("font-size", "12px")
                   .attr("fill", () => {
                     if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
                       return "#ffffff"
@@ -552,7 +552,7 @@ function updateWasteCategoryWindow(data, svg){
             .append("rect")
                 .attr('id', "catMoreInfoWindowRect")
                 .attr('height', 100)
-                .attr('fill', "pink")
+                .attr('fill', "#ededed")
                 .attr("rx", "25");
 
         catMoreInfoWindow
@@ -671,21 +671,39 @@ function updateWasteTypeWindow(data, svg){
             .append("text")
                 .attr("id", "typeMoreInfoTitle")
                 .attr("font-size", "15px")
-                .attr("fill", "black")
+                .attr("fill", () => {
+                    if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                      return "#ffffff"
+                    } else {
+                      return "#000000"
+                    }
+                })                
                 .style("pointer-events", "none");
 
         typeMoreInfoWindow
             .append("text")
                 .attr("id", "typeMoreInfoAmount")
                 .attr("font-size", "15px")
-                .attr("fill", "black")
+                .attr("fill", () => {
+                    if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                      return "#ffffff"
+                    } else {
+                      return "#000000"
+                    }
+                })
                 .style("pointer-events", "none");
 
         typeMoreInfoWindow
             .append("text")
                 .attr("id", "typeMoreInfoPercentage")
                 .attr("font-size", "15px")
-                .attr("fill", "black")
+                .attr("fill", () => {
+                    if (d3.color(currentRectColor).formatHex() == "#003c5c" || d3.color(currentRectColor).formatHex() == "#00597c") {
+                      return "#ffffff"
+                    } else {
+                      return "#000000"
+                    }
+                })
                 .style("pointer-events", "none");
 
 
