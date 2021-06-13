@@ -428,7 +428,7 @@ function updateWasteCategoryWindow(data, svg){
                     })
                     .attr("y", 395)
                     .attr("width", d => {
-                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
+                        return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0);
                     })
                     .attr("height", catRectHeight)
                     .style("fill", currentRectColor)
@@ -644,7 +644,7 @@ function updateWasteTypeWindow(data, svg){
                 })
                 .attr("y", 300)
                 .attr("width", d => {
-                    return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) ;
+                    return (x(d.x1) - x(d.x0) - 2 < 0) ? 0 : x(d.x1) - x(d.x0) - 1.5;
                 })
                 .attr("height", catRectHeight)
                 .attr("fill", currentRectColor)
